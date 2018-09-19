@@ -1,0 +1,67 @@
+{
+  "root": true,
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  },
+  {{#if_eq eslintConfig "airbnb"}}
+  "extends": [
+    "plugin:vue/base",
+    "plugin:vue/essential",
+    "plugin:vue/strongly-recommended",
+    "plugin:vue/recommended",
+    "airbnb-base"
+  ],
+  {{/if_eq}}
+  {{#if_eq eslintConfig "standard"}}
+  "extends": [
+    "plugin:vue/base",
+    "plugin:vue/essential",
+    "plugin:vue/strongly-recommended",
+    "plugin:vue/recommended",
+    "standard"
+  ],
+  {{/if_eq}}
+  {{#if_eq eslintConfig "none"}}
+  "extends": [
+    "plugin:vue/base",
+    "plugin:vue/essential",
+    "plugin:vue/strongly-recommended",
+    "plugin:vue/recommended"
+  ],
+  {{/if_eq}}
+  "plugins": [
+    "vue"
+  ],
+  {{#if_eq eslintConfig "airbnb"}}
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": 'webpack.base.config.js'
+      }
+    }
+  },
+  {{/if_eq}}
+  "rules": {
+    {{#if_eq eslintConfig "airbnb"}}
+    "import/extensions": "off",
+    {{/if_eq}}
+    "import/no-unresolved": "off",
+    "linebreak-style": "off",
+    "no-console": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.vue"
+      ],
+      "rules": {
+        "indent": "off",
+        "vue/no-parsing-error": "off"
+      }
+    }
+  ]
+}

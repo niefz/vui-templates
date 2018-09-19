@@ -1,0 +1,59 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "> 1%",
+            "last 2 versions",
+            "not ie <= 8"
+          ]
+        }
+      }
+    ],
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-vue-jsx",
+    "transform-runtime"{{#UI}},
+    {{#if_eq UIConfig "element-ui"}}
+    [
+      "component",
+      {
+        "libraryName": "element-ui",
+        "styleLibraryName": "~theme"
+      }
+    ]
+    {{/if_eq}}
+    {{#if_eq UIConfig "iview"}}
+    [
+      "import",
+      {
+        "libraryName": "iview",
+        "libraryDirectory": "src/components"
+      }
+    ]
+    {{/if_eq}}
+    {{/UI}}
+  ]{{#if_or unit e2e}},
+  "env": {
+    "test": {
+      "presets": [
+        "env",
+        "stage-0"
+      ]{{#if_eq runner "karma"}},
+      "plugins": [
+        "transform-vue-jsx",
+        "istanbul"
+      ]{{/if_eq}}{{#if_eq runner "jest"}},
+      "plugins": [
+        "transform-vue-jsx",
+        "transform-es2015-modules-commonjs",
+        "dynamic-import-node"
+      ]{{/if_eq}}
+    }
+  }{{/if_or}},
+  "comments": false
+}

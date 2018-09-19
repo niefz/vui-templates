@@ -1,0 +1,82 @@
+@import "variables";
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  color: $--color-text-regular;
+}
+
+.w {
+  padding: 0 20px;
+}
+
+.clearfix::before,
+.clearfix::after {
+  position: relative;
+  display: table;
+  content: '';
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.bg-grey {
+  background-color: $--color-bg;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.p-16 {
+  padding: 16px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.forbidden {
+  color: $color-FAA51F;
+}
+
+.iconfont {
+  font-family: 'iconfont', sans-serif;
+}
+
+@font-face {
+  font-family: 'iconfont';
+}
