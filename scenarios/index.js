@@ -15,7 +15,8 @@ const scenario = isTest && require(`./${scenarios[index]}.json`)
 
 exports.addTestAnswers = (metalsmith, options, helpers) => {
   Object.assign(
-    metalsmith.metadata(),
+    metalsmith
+      .metadata(),
     { isNotTest: !isTest },
     isTest ? scenario : {}
   )

@@ -12,7 +12,7 @@ const eslintStyles = ['airbnb', 'standard']
  * They are unsorted because they were grouped for the handlebars helpers
  * @param {object} data Data from questionnaire
  */
-export const sortDependencies = (data) => {
+exports.sortDependencies = (data) => {
   const packageJsonFile = path.join(data.inPlace ? '' : data.destDirName, 'package.json')
   const packageJson = JSON.parse(fs.readFileSync(packageJsonFile))
   packageJson.dependencies = sortObject(packageJson.dependencies)
@@ -25,19 +25,19 @@ export const sortDependencies = (data) => {
  * @param {string} cwd Path of the created project directory
  * @param {object} data Data from questionnaire
  */
-export const installDependencies = (cwd, data, color) => {
+exports.installDependencies = (cwd, data, color) => {
   const executable = data.autoInstall || 'npm';
   console.log(`\n\n# ${color('Installing project dependencies ...')}`)
   if (data.UI) {
     console.log('# ========================\n')
-      if (data.UIConfig === 'element-ui') {
-        runCommand(executable,  ['install', 'element-theme', '-g'], { cwd })
-      } else {
-        runCommand(executable,  ['install', 'iview-theme', '-g'], { cwd })
-      }
+    if (data.UIConfig === 'element-ui') {
+      runCommand(executable, ['install', 'element-theme', '-g'], { cwd })
+    } else {
+      runCommand(executable, ['install', 'iview-theme', '-g'], { cwd })
+    }
   }
   console.log('# ========================\n')
-  return runCommand(executable,  ['install'], { cwd })
+  return runCommand(executable, ['install'], { cwd })
 }
 
 /**
@@ -45,7 +45,7 @@ export const installDependencies = (cwd, data, color) => {
  * @param {string} cwd Path of the created project directory
  * @param {object} data Data from questionnaire
  */
-export const runLintFix = (cwd, data, color) => {
+exports.runLintFix = (cwd, data, color) => {
   if (data.eslint && eslintStyles.indexOf(data.eslintConfig) !== -1) {
     console.log(
       `\n\n${color(
@@ -66,7 +66,7 @@ export const runLintFix = (cwd, data, color) => {
  * Prints the final message with instructions of necessary next steps.
  * @param {Object} data Data from questionnaire.
  */
-export const printMessage = (data, { green, yellow }) => {
+exports.printMessage = (data, { green, yellow }) => {
   const message = `
   # ${green('Project initialization finished!')}
   # ========================
