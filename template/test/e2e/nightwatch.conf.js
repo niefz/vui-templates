@@ -19,7 +19,7 @@ module.exports = {
   page_objects_path: '',
 
   // Location of an external globals module which will be loaded and made available to the test as a property globals on the main client instance.
-  globals_path: '',
+  globals_path: 'globals.js',
 
   // 	An object containing Selenium Server related configuration options. See below for details.
   selenium: {
@@ -85,7 +85,7 @@ module.exports = {
       screenshots: {
         enabled: true,
         on_failure: true,
-        on_error: false,
+        on_error: true,
         path: 'test/e2e/report'
       },
 
@@ -143,7 +143,7 @@ module.exports = {
       end_session_on_fail: true,
 
       // Skip the remaining testcases (or test steps) from the same test suite (i.e. test file), when one testcase fails.
-      skip_testcases_on_fail: true,
+      skip_testcases_on_fail: false,
     },
 
     chrome: {
