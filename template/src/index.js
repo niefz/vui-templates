@@ -46,16 +46,6 @@ Vue.use(Loading.directive);
 {{/if_eq}}
 {{/UI}}
 
-{{#UI}}
-{{#if_eq UIConfig 'element-ui'}}
-/**
- * Element 全局配置
- * @type {{size: string}}
- */
-Vue.prototype.$ELEMENT = { size: 'small' };
-{{/if_eq}}
-{{/UI}}
-
 
 {{#router}}
 const router = new VueRouter(Router);
