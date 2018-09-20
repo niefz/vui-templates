@@ -31,8 +31,6 @@
     "sftp": "webpack --config sftp.config.js --progress --colors"
   },
   "dependencies": {
-    "axios": "0.18.0",
-    "babel-polyfill": "6.26.0",
     {{#if_eq UIConfig "element-ui"}}
     "element-theme-chalk": "2.4.7",
     "element-ui": "2.4.7",
@@ -47,6 +45,8 @@
     {{#vuex}}
     "vuex": "3.0.1"
     {{/vuex}}
+    "axios": "0.18.0",
+    "babel-polyfill": "6.26.0"
   },
   "devDependencies": {
     {{#htmllint}}
