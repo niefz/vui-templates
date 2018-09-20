@@ -16,7 +16,6 @@
     "dev": "webpack-dev-server --config webpack.dev.config.js --progress --colors",
     "sync": "node browser.sync.config.js",
     "dist": "webpack --config webpack.dist.config.js --progress --colors",
-    "sftp": "webpack --config sftp.config.js --progress --colors",
     {{#stylelint}}
     "stylelint": "stylelint 'src/**/*.scss' --fix",
     {{/stylelint}}
@@ -27,8 +26,9 @@
     "test:unit": "karma start test/unit/karma.conf.js",
     {{/if_eq}}
     {{#e2e}}
-    "test:e2e": "nightwatch --config test/e2e/nightwatch.conf.js"
+    "test:e2e": "nightwatch --config test/e2e/nightwatch.conf.js",
     {{/e2e}}
+    "sftp": "webpack --config sftp.config.js --progress --colors"
   },
   "dependencies": {
     "axios": "0.18.0",
