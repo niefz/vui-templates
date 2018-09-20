@@ -3,7 +3,7 @@
  */
 const path = require('path')
 const fs = require('fs')
-const spawn = require('child_process').spawn
+const process = require('child_process')
 
 const eslintStyles = ['airbnb', 'standard']
 
@@ -28,15 +28,10 @@ exports.sortDependencies = (data) => {
 exports.installDependencies = (cwd, data, color) => {
   const executable = data.autoInstall || 'npm';
   console.log(`\n\n# ${color('Installing project dependencies ...')}`)
-  if (data.UI) {
-    console.log('# ========================\n')
-    if (data.UIConfig === 'element-ui') {
-      runCommand(executable, ['install', 'element-theme', '-g'], { cwd })
-    } else {
-      runCommand(executable, ['install', 'iview-theme', '-g'], { cwd })
-    }
-  }
   console.log('# ========================\n')
+  if (data.UI) {
+    return process.execFile(`../sh/${data.UIConfig}.sh`)
+  }
   return runCommand(executable, ['install'], { cwd })
 }
 
@@ -101,7 +96,7 @@ const installMsg = (data) => {
 }
 
 /**
- * Spawns a child process and runs the specified command
+ * spawns a child process and runs the specified command
  * By default, runs in the CWD and inherits stdio
  * Options are the same as node's child_process.spawn
  * @param {string} cmd
@@ -110,7 +105,7 @@ const installMsg = (data) => {
  */
 const runCommand = (cmd, args, options) => {
   return new Promise((resolve) => {
-    const spwan = spawn(
+    const spwan = process.spawn(
       cmd,
       args,
       Object.assign(

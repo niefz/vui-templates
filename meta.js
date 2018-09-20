@@ -45,7 +45,7 @@ module.exports = {
     license: {
       type: 'string',
       required: false,
-      message: 'License',
+      message: 'Project license',
       default: 'MIT',
     },
     author: {
@@ -84,12 +84,12 @@ module.exports = {
         {
           name: 'Airbnb (https://github.com/airbnb/javascript)',
           value: 'airbnb',
-          short: 'Airbnb',
+          short: 'airbnb',
         },
         {
           name: 'Standard (https://github.com/standard/standard)',
           value: 'standard',
-          short: 'Standard',
+          short: 'standard',
         },
         {
           name: 'none (configure it yourself)',
@@ -110,12 +110,17 @@ module.exports = {
         {
           name: 'Element-UI',
           value: 'element-ui',
-          short: 'Element-UI',
+          short: 'element-ui',
         },
         {
           name: 'iView',
           value: 'iview',
-          short: 'iView',
+          short: 'iview',
+        },
+        {
+          name: 'Vui',
+          value: 'vui',
+          short: 'vui',
         },
         {
           name: 'none (configure it yourself)',
