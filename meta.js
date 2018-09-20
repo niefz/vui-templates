@@ -3,22 +3,16 @@
  */
 const path = require('path')
 
-const {
-  sortDependencies,
-  installDependencies,
-  runLintFix,
-  printMessage,
-} = require('./utils')
+const { sortDependencies, installDependencies, runLintFix, printMessage } = require('./utils')
+const { addTestAnswers } = require('./scenarios')
 const pkg = require('./package.json')
 
 const templateVersion = pkg.version
 
-const { addTestAnswers } = require('./scenarios')
-
 module.exports = {
   metalsmith: {
     // When running tests for the template, this adds answers for the selected scenario
-    before: addTestAnswers
+    // before: addTestAnswers
   },
   helpers: {
     if_or(v1, v2, options) {
@@ -173,8 +167,7 @@ module.exports = {
     autoInstall: {
       when: 'isNotTest',
       type: 'list',
-      message:
-        'Should we run `npm install` for you after the project has been created? (recommended)',
+      message: 'Should we run `npm install` for you after the project has been created? (recommended)',
       choices: [
         {
           name: 'Yes, use NPM',
