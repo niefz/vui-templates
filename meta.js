@@ -29,62 +29,62 @@ module.exports = {
   },
   prompts: {
     name: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'string',
       required: true,
       message: 'Project name',
     },
     description: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'string',
       required: false,
       message: 'Project description',
       default: 'A Vue.js project',
     },
     license: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'string',
       required: false,
       message: 'License',
       default: 'MIT',
     },
     author: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'string',
       message: 'Author',
     },
     router: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Install vue-router?',
     },
     vuex: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Install vuex?',
     },
     i18n: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Install vue-i18n?',
     },
     htmllint: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Use htmllint to lint your html?',
     },
     stylelint: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Use stylelint to lint your style?',
     },
     eslint: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Use eslint to lint your code?',
     },
     eslintConfig: {
-      when: 'isNotTest && eslint',
+      when: 'eslint',
       type: 'list',
       message: 'Pick an eslint preset',
       choices: [
@@ -106,12 +106,12 @@ module.exports = {
       ],
     },
     UI: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Set up UI library',
     },
     UIConfig: {
-      when: 'isNotTest && UI',
+      when: 'UI',
       type: 'list',
       message: 'Pick a UI library',
       choices: [
@@ -133,12 +133,12 @@ module.exports = {
       ],
     },
     unit: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Set up unit tests',
     },
     runner: {
-      when: 'isNotTest && unit',
+      when: 'unit',
       type: 'list',
       message: 'Pick a test runner',
       choices: [
@@ -160,12 +160,12 @@ module.exports = {
       ],
     },
     e2e: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'confirm',
       message: 'Setup e2e tests with Nightwatch?',
     },
     autoInstall: {
-      when: 'isNotTest',
+      // when: 'isNotTest',
       type: 'list',
       message: 'Should we run `npm install` for you after the project has been created? (recommended)',
       choices: [
