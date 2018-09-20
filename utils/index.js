@@ -31,7 +31,9 @@ exports.installDependencies = (cwd, data, color) => {
   console.log('# ========================\n')
   if (data.UI) {
     return new Promise((resolve) => {
-      process.execFile(`../sh/${data.UIConfig}.sh`)
+      process.execFile(`../sh/${data.UIConfig}.sh`, () => {
+        resolve()
+      })
     })
   }
   return runCommand(executable, ['install'], { cwd })
