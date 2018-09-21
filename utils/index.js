@@ -119,7 +119,7 @@ const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   return new Promise((resolve) => {
     if (UI) {
-      execFile('ls -al', { shell: '/bin/bash' }, (error, stdout, stderr) => {
+      execFile('node', ['--version'], (error, stdout, stderr) => {
         console.log(error)
         resolve()
       })
