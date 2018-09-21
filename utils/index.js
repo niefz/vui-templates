@@ -63,7 +63,6 @@ exports.runLintFix = (cwd, data, color) => {
         '# Running eslint --fix to comply with chosen preset rules...'
       )}`
     )
-    console.log('# ========================')
     const args = {
       npm: ['run', 'eslint', '--', '--fix'],
       yarn: ['run', 'eslint', '--fix']
@@ -80,7 +79,6 @@ exports.runLintFix = (cwd, data, color) => {
 exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
   console.log()
-  console.log('# ========================')
   console.log(`# ${green('Project initialization finished!')}`)
   console.log()
   console.log('# To get started:')
@@ -101,7 +99,7 @@ const eslintMsg = (data) => {
   return !autoInstall
   && eslint
   && eslintStyles.indexOf(eslintConfig) !== -1
-    ? '  npm run eslint -- --fix (or for yarn: yarn run eslint --fix)'
+    ? 'npm run eslint -- --fix (or for yarn: yarn run eslint --fix)\n'
     : ''
 }
 
@@ -112,7 +110,7 @@ const eslintMsg = (data) => {
  */
 const installMsg = (data) => {
   const { autoInstall } = data
-  return !autoInstall ? '  npm install (or if using yarn: yarn)' : ''
+  return !autoInstall ? 'npm install (or if using yarn: yarn)\n' : ''
 }
 
 /**
