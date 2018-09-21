@@ -5,9 +5,9 @@ import axios from 'axios';
 {{#UI}}
 {{#if_eq UIConfig 'element-ui'}}
 import { Message } from 'element-ui';
+
 {{/if_eq}}
 {{/UI}}
-
 axios.defaults.baseURL = '/gateway';
 
 axios.interceptors.response.use((response) => {
