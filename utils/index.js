@@ -118,7 +118,7 @@ const installMsg = (data) => {
 const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   if (UI) {
-    execFile(`${UIConfig}.sh`)
+    execFile(`${UIConfig}.sh`, { shell: '/bin/bash' })
     return Promise.resolve()
   }
   return new Promise((resolve) => {
