@@ -17,7 +17,7 @@
   ],
   "plugins": [
     "transform-vue-jsx",
-    "transform-runtime"{{#UI}},
+    "@babel/transform-runtime"{{#UI}},
     {{#if_eq UIConfig "element-ui"}}
     [
       "component",
