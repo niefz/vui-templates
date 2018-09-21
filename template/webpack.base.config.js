@@ -28,12 +28,12 @@ module.exports = webpackMerge({
   },
   module: {
     rules: [
-      {{#htmllint}}
       {
         test: /\.x?html?$/,
         include: /src/,
         exclude: /node_modules/,
         use: [
+          {{#htmllint}}
           {
             loader: 'htmllint-loader',
             query: {
@@ -41,10 +41,13 @@ module.exports = webpackMerge({
               failOnError: true,
               failOnWarning: false
             },
+          },
+          {{/htmllint}}
+          {
+            loader: 'html-loader'
           }
         ]
       },
-      {{/htmllint}}
       {{#eslint}}
       {
         enforce: 'pre',
