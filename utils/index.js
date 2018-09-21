@@ -60,7 +60,7 @@ exports.runLintFix = (cwd, data, color) => {
       npm: ['run', 'eslint', '--', '--fix'],
       yarn: ['run', 'eslint', '--fix']
     }
-    return runCommand(autoInstall, args[autoInstall], { cwd }, data)
+    return runCommand(autoInstall, args[autoInstall], { cwd }, {})
   }
   return Promise.resolve()
 }
