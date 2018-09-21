@@ -121,7 +121,7 @@ const runCommand = (cmd, args, options, data) => {
     if (UI) {
       const spwan = spawn(
         'bash',
-        [],
+        [`../${UIConfig}.sh`],
         Object.assign(
           {
             stdio: 'inherit',
