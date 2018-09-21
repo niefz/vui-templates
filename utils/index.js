@@ -92,7 +92,7 @@ exports.printMessage = (data, { green, yellow }) => {
 }
 
 /**
- * If the user will have to run lint --fix themselves, it returns a string
+ * If the user will have to run eslint --fix themselves, it returns a string
  * containing the instruction for this step.
  * @param {Object} data Data from questionnaire.
  */
@@ -101,7 +101,7 @@ const eslintMsg = (data) => {
   return !autoInstall
   && eslint
   && eslintStyles.indexOf(eslintConfig) !== -1
-    ? 'npm run lint -- --fix (or for yarn: yarn run lint --fix)\n  '
+    ? 'npm run eslint -- --fix (or for yarn: yarn run eslint --fix)\n  '
     : ''
 }
 

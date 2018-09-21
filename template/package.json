@@ -28,6 +28,9 @@
     {{#e2e}}
     "test:e2e": "nightwatch --config test/e2e/nightwatch.conf.js",
     {{/e2e}}
+    {{#eslint}}
+    "eslint": "eslint --ext .js,.vue src{{#unit}} test/unit{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
+    {{/eslint}}
     "sftp": "webpack --config sftp.config.js --progress --colors"
   },
   "dependencies": {
