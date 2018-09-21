@@ -99,7 +99,7 @@ const eslintMsg = (data) => {
   return !autoInstall
   && eslint
   && eslintStyles.indexOf(eslintConfig) !== -1
-    ? 'npm run eslint -- --fix (or for yarn: yarn run eslint --fix)\n'
+    ? '  npm run eslint -- --fix (or for yarn: yarn run eslint --fix)\n'
     : ''
 }
 
@@ -110,7 +110,7 @@ const eslintMsg = (data) => {
  */
 const installMsg = (data) => {
   const { autoInstall } = data
-  return !autoInstall ? 'npm install (or if using yarn: yarn)\n' : ''
+  return !autoInstall ? '  npm install (or if using yarn: yarn)\n' : ''
 }
 
 /**
