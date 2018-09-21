@@ -42,7 +42,7 @@ exports.sortDependencies = (data) => {
 exports.installDependencies = (cwd, data, color) => {
   const { autoInstall, UIConfig } = data
   const executable = autoInstall
-  console.log(`\n\n# ${color('Installing project dependencies ...')}`)
+  console.log(`\n# ${color('Installing project dependencies ...')}`)
   console.log()
   console.log('# ========================\n')
   return runCommand(executable, ['install'], { cwd }, UIConfig)
@@ -80,6 +80,7 @@ exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
   console.log(`
 # ${green('Project initialization finished!')}
+
 # ========================
 
 To get started:
