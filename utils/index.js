@@ -124,6 +124,7 @@ const runCommand = (cmd, args, options, data) => {
           cwd: process.cwd(),
         },
         (err, stdout, stderr) => {
+        console.log('err', err)
           resolve()
         }
       )
