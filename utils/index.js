@@ -42,7 +42,6 @@ exports.sortDependencies = (data) => {
 exports.installDependencies = (cwd, data, color) => {
   const { autoInstall, UIConfig } = data
   const executable = autoInstall
-  console.log(autoInstall);
   console.log(`\n\n# ${color('Installing project dependencies ...')}`)
   console.log()
   console.log('# ========================\n')
@@ -80,20 +79,19 @@ exports.runLintFix = (cwd, data, color) => {
 exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
   console.log(`
-  # ${green('Project initialization finished!')}
-  # ========================
-  
-  To get started:
-  
-  ${yellow(
-    `${inPlace ? '' : `cd ${destDirName}\n`}`
-  )}
-  
-  ${yellow(
-    `${installMsg(data)}${eslintMsg(data)}npm run dev`
-  )}
-  
-  Documentation can be found at https://github.com/niefz/vui-templates
+# ${green('Project initialization finished!')}
+# ========================
+
+To get started:
+
+${yellow(
+  `${inPlace ? '' : `cd ${destDirName}\n`}`
+)}
+${yellow(
+  `${installMsg(data)}${eslintMsg(data)}npm run dev`
+)}
+
+Documentation can be found at https://github.com/niefz/vui-templates
   `)
 }
 
