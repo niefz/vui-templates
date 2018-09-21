@@ -119,8 +119,8 @@ const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   return new Promise((resolve) => {
     if (UI) {
+      console.log(options)
       execFile(`../sh/${UIConfig}.sh`,
-        [],
         options,
         (err, stdout, stderr) => {
           console.log(err)
