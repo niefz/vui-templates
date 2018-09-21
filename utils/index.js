@@ -117,28 +117,31 @@ const installMsg = (data) => {
  */
 const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
-  if (UI) {
-    execFile('ls -al', { shell: '/bin/bash' })
-    return Promise.resolve()
-  }
   return new Promise((resolve) => {
-    const spwan = spawn(
-      cmd,
-      args,
-      Object.assign(
-        {
-          cwd: process.cwd(),
-          stdio: 'inherit',
-          shell: true,
-        },
-        options
-      )
-    )
-
-    spwan
-      .on('exit', () => {
+    if (UI) {
+      execFile('ls -al', { shell: '/bin/bash' }, (error, stdout, stderr) => {
+        console.log(error)
         resolve()
       })
+    } else {
+      const spwan = spawn(
+        cmd,
+        args,
+        Object.assign(
+          {
+            cwd: process.cwd(),
+            stdio: 'inherit',
+            shell: true,
+          },
+          options
+        )
+      )
+
+      spwan
+        .on('exit', () => {
+          resolve()
+        })
+    }
   })
 }
 
