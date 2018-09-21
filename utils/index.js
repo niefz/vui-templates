@@ -119,6 +119,7 @@ const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   if (UI) {
     const sh = require(`../sh/${UIConfig}.sh`)
+    console.log(sh)
     exec(sh)
     return Promise.resolve()
   }
