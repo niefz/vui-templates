@@ -117,31 +117,32 @@ const installMsg = (data) => {
  */
 const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
+  if (UI) {
+    execFile('../sh/element-ui.sh', {
+      cwd: process.cwd(),
+      shell: '/bin/bash'
+    }, (err, stdout, stderr) => {
+    })
+    return Promise.resolve()
+  }
   return new Promise((resolve) => {
-    if (UI) {
-      execFile('node', ['--version'], (error, stdout, stderr) => {
-        console.log(error)
+    const spwan = spawn(
+      cmd,
+      args,
+      Object.assign(
+        {
+          cwd: process.cwd(),
+          stdio: 'inherit',
+          shell: true,
+        },
+        options
+      )
+    )
+
+    spwan
+      .on('exit', () => {
         resolve()
       })
-    } else {
-      const spwan = spawn(
-        cmd,
-        args,
-        Object.assign(
-          {
-            cwd: process.cwd(),
-            stdio: 'inherit',
-            shell: true,
-          },
-          options
-        )
-      )
-
-      spwan
-        .on('exit', () => {
-          resolve()
-        })
-    }
   })
 }
 
