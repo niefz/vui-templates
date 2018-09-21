@@ -1,7 +1,7 @@
 /**
  * Created by niefz on 2018/9/18.
  */
-const path = require('path')
+const { join } = require('path')
 
 const {
   sortDependencies,
@@ -9,6 +9,7 @@ const {
   runLintFix,
   printMessage,
 } = require('./utils')
+
 const pkg = require('./package.json')
 
 const templateVersion = pkg.version
@@ -20,11 +21,13 @@ module.exports = {
   helpers: {
     if_or(v1, v2, options) {
 
+      const { fn, inverse } = options
+
       if (v1 || v2) {
-        return options.fn(this)
+        return fn(this)
       }
 
-      return options.inverse(this)
+      return inverse(this)
     },
     template_version() {
       return templateVersion
@@ -201,11 +204,12 @@ module.exports = {
     'src/local/**/*': 'i18n',
   },
   complete: function (data, { chalk }) {
-    const green = chalk.green
+    const { inPlace, destDirName } = data
+    const { green, red } = chalk
 
     sortDependencies(data)
 
-    const cwd = path.join(process.cwd(), data.inPlace ? '' : data.destDirName)
+    const cwd = join(process.cwd(), inPlace ? '' : destDirName)
 
     if (data.autoInstall) {
       installDependencies(cwd, data, green)
@@ -216,7 +220,7 @@ module.exports = {
           printMessage(data, green)
         })
         .catch(e => {
-          console.log(chalk.red('Error:'), e)
+          console.log(red('Error:'), e)
         })
     } else {
       printMessage(data, chalk)

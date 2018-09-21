@@ -1,11 +1,24 @@
 /**
  * Created by niefz on 2018/9/18.
  */
-const path = require('path')
-const fs = require('fs')
-const child_process = require('child_process')
+const {
+  join,
+} = require('path')
 
-const eslintStyles = ['airbnb', 'standard']
+const {
+  readFileSync,
+  writeFileSync,
+} = require('fs')
+
+const {
+  spawn,
+  execFile,
+} = require('child_process')
+
+const eslintStyles = [
+  'airbnb',
+  'standard',
+]
 
 /**
  * Sorts dependencies in package.json alphabetically.
@@ -13,11 +26,12 @@ const eslintStyles = ['airbnb', 'standard']
  * @param {object} data Data from questionnaire
  */
 exports.sortDependencies = (data) => {
-  const packageJsonFile = path.join(data.inPlace ? '' : data.destDirName, 'package.json')
-  const packageJson = JSON.parse(fs.readFileSync(packageJsonFile))
+  const { inPlace, destDirName } = data
+  const packageJsonFile = join(inPlace ? '' : destDirName, 'package.json')
+  const packageJson = JSON.parse(readFileSync(packageJsonFile))
   packageJson.dependencies = sortObject(packageJson.dependencies)
   packageJson.devDependencies = sortObject(packageJson.devDependencies)
-  fs.writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2) + '\n')
+  writeFileSync(packageJsonFile, JSON.stringify(packageJson, null, 2) + '\n')
 }
 
 /**
@@ -26,23 +40,12 @@ exports.sortDependencies = (data) => {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = (cwd, data, color) => {
-  const executable = data.autoInstall || 'npm';
+  const { autoInstall, UIConfig } = data
+  const executable = autoInstall || 'npm'
   console.log(`\n\n# ${color('Installing project dependencies ...')}`)
+  console.log()
   console.log('# ========================\n')
-  if (data.UI) {
-    return new Promise((resolve) => {
-      console.log(data.UIConfig);
-      child_process
-        .execFile(`../sh/${data.UIConfig}.sh`,
-          {
-            cwd: process.cwd(),
-          },
-          () => {
-            resolve()
-          })
-    })
-  }
-  return runCommand(executable, ['install'], { cwd })
+  return runCommand(executable, ['install'], { cwd }, UIConfig)
 }
 
 /**
@@ -51,18 +54,20 @@ exports.installDependencies = (cwd, data, color) => {
  * @param {object} data Data from questionnaire
  */
 exports.runLintFix = (cwd, data, color) => {
-  if (data.eslint && eslintStyles.indexOf(data.eslintConfig) !== -1) {
+  const { eslint, eslintConfig, UIConfig, autoInstall } = data
+  if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
     console.log(
       `\n\n${color(
         'Running eslint --fix to comply with chosen preset rules...'
       )}`
     )
+    console.log()
     console.log('# ========================\n')
-    const args =
-      data.autoInstall === 'npm'
-        ? ['run', 'eslint', '--', '--fix']
-        : ['run', 'eslint', '--fix']
-    return runCommand(data.autoInstall, args, { cwd })
+    const args = {
+      npm: ['run', 'eslint', '--', '--fix'],
+      yarn: ['run', 'eslint', '--fix']
+    }
+    return runCommand(autoInstall, args[autoInstall], { cwd }, UIConfig)
   }
   return Promise.resolve()
 }
@@ -72,12 +77,15 @@ exports.runLintFix = (cwd, data, color) => {
  * @param {Object} data Data from questionnaire.
  */
 exports.printMessage = (data, { green, yellow }) => {
+  const { inPlace, destDirName } = data
   const message = `
   # ${green('Project initialization finished!')}
   # ========================
+  
   To get started:
-    ${yellow(`${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(data)}${eslintMsg(data)}npm run dev`)}
-    
+  
+  ${yellow(`${inPlace ? '' : `cd ${destDirName}\n  `}${installMsg(data)}${eslintMsg(data)}npm run dev`)}
+  
   Documentation can be found at https://github.com/niefz/vui-templates
   `
   console.log(message)
@@ -89,9 +97,10 @@ exports.printMessage = (data, { green, yellow }) => {
  * @param {Object} data Data from questionnaire.
  */
 const eslintMsg = (data) => {
-  return !data.autoInstall &&
-  data.eslint &&
-  eslintStyles.indexOf(data.lintConfig) !== -1
+  const { eslint, eslintConfig, autoInstall } = data
+  return !autoInstall
+  && eslint
+  && eslintStyles.indexOf(eslintConfig) !== -1
     ? 'npm run lint -- --fix (or for yarn: yarn run lint --fix)\n  '
     : ''
 }
@@ -102,7 +111,8 @@ const eslintMsg = (data) => {
  * @param {Object} data Data from the questionnaire
  */
 const installMsg = (data) => {
-  return !data.autoInstall ? 'npm install (or if using yarn: yarn)\n  ' : ''
+  const { autoInstall } = data
+  return !autoInstall ? 'npm install (or if using yarn: yarn)\n  ' : ''
 }
 
 /**
@@ -112,35 +122,48 @@ const installMsg = (data) => {
  * @param {string} cmd
  * @param {array<string>} args
  * @param {object} options
+ * @param {string} ui
  */
-const runCommand = (cmd, args, options) => {
+const runCommand = (cmd, args, options, ui) => {
   return new Promise((resolve) => {
-    const spwan = child_process.spawn(
-      cmd,
-      args,
-      Object.assign(
+    if (ui) {
+      console.log(ui);
+      execFile(`../sh/${ui}.sh`,
         {
           cwd: process.cwd(),
-          stdio: 'inherit',
-          shell: true,
         },
-        options
+        () => {
+          resolve()
+        })
+    } else {
+      const spwan = spawn(
+        cmd,
+        args,
+        Object.assign(
+          {
+            cwd: process.cwd(),
+            stdio: 'inherit',
+            shell: true,
+          },
+          options
+        )
       )
-    )
 
-    spwan
-      .on('exit', () => {
-        resolve()
-      })
+      spwan
+        .on('exit', () => {
+          resolve()
+        })
+    }
   })
 }
 
 const sortObject = (object) => {
   // Based on https://github.com/yarnpkg/yarn/blob/v1.3.2/src/config.js#L79-L85
   const sortedObject = {}
-  Object.keys(object)
+  Object
+    .keys(object)
     .sort()
-    .forEach(item => {
+    .forEach((item) => {
       sortedObject[item] = object[item]
     })
   return sortedObject
