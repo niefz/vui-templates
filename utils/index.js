@@ -56,7 +56,6 @@ exports.installDependencies = (cwd, data, color) => {
 exports.runLintFix = (cwd, data, color) => {
   const { eslint, eslintConfig, autoInstall } = data
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
-    console.log()
     console.log('# ========================')
     console.log(
       `${color(
