@@ -3,7 +3,7 @@
  */
 const path = require('path')
 const fs = require('fs')
-const process = require('child_process')
+const child_process = require('child_process')
 
 const eslintStyles = ['airbnb', 'standard']
 
@@ -32,9 +32,14 @@ exports.installDependencies = (cwd, data, color) => {
   if (data.UI) {
     return new Promise((resolve) => {
       console.log(data.UIConfig);
-      process.execFile(`../sh/${data.UIConfig}.sh`, () => {
-        resolve()
-      })
+      child_process
+        .execFile(`../sh/${data.UIConfig}.sh`,
+          {
+            cwd: process.cwd(),
+          },
+          () => {
+            resolve()
+          })
     })
   }
   return runCommand(executable, ['install'], { cwd })
@@ -110,7 +115,7 @@ const installMsg = (data) => {
  */
 const runCommand = (cmd, args, options) => {
   return new Promise((resolve) => {
-    const spwan = process.spawn(
+    const spwan = child_process.spawn(
       cmd,
       args,
       Object.assign(
