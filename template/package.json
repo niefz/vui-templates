@@ -84,14 +84,9 @@
     {{#UI}}
     {{#if_eq UIConfig "element-ui"}}
     "babel-plugin-component": "1.1.1",
-    "node-sass": "4.9.3",
-    "postcss-salad": "2.0.1",
-    "sass-loader": "7.1.0",
     {{/if_eq}}
     {{#if_eq UIConfig "iview"}}
     "babel-plugin-import": "1.9.1",
-    "less": "3.8.1",
-    "less-loader": "4.1.0",
     {{/if_eq}}
     {{/UI}}
     {{#if_eq runner "jest"}}
@@ -148,12 +143,17 @@
     "friendly-errors-webpack-plugin": "1.7.0",
     "happypack": "5.0.0",
     "html-webpack-plugin": "3.2.0",
+    "less": "3.8.1",
+    "less-loader": "4.1.0",
     "mini-css-extract-plugin": "0.4.3",
+    "node-sass": "4.9.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "os": "0.1.1",
     "postcss-import": "12.0.0",
     "postcss-loader": "3.0.0",
+    "postcss-salad": "2.0.1",
     "postcss-url": "8.0.0",
+    "sass-loader": "7.1.0",
     "semver": "5.5.1",
     "shelljs": "0.8.2",
     "uglifyjs-webpack-plugin": "2.0.1",
