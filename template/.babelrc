@@ -12,8 +12,7 @@
           ]
         }
       }
-    ],
-    "@babel/preset-stage-0"
+    ]
   ],
   "plugins": [
     "@vue/transform-vue-jsx",
