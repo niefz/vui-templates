@@ -53,7 +53,7 @@
     "vuex": "3.0.1",
     {{/vuex}}
     "axios": "0.18.0",
-    "babel-polyfill": "6.26.0"
+    "@babel/polyfill": "7.0.0"
   },
   "devDependencies": {
     {{#htmllint}}
@@ -87,7 +87,7 @@
     {{/eslint}}
     {{#UI}}
     {{#if_eq UIConfig "element-ui"}}
-    "babel-plugin-component": "1.1.1",
+    "babel-plugin-component": "1.9.1",
     {{/if_eq}}
     {{#if_eq UIConfig "iview"}}
     "babel-plugin-import": "1.9.1",
@@ -122,21 +122,21 @@
     "sinon-chai": "3.2.0",
     {{/if_eq}}
     {{#e2e}}
-    "babel-register": "6.26.0",
+    "@babel/register": "7.0.0",
     "chromedriver": "2.41.0",
     "cross-spawn": "6.0.5",
     "nightwatch": "1.0.10",
     "nightwatch-helpers": "1.2.0",
     "selenium-server": "3.14.0",
     {{/e2e}}
-    "babel-core": "6.26.3",
-    "babel-helper-vue-jsx-merge-props": "2.0.3",
+    "@babel/core": "7.1.0",
+    "babel-helper-vue-jsx-merge-props": "3.7.0",
     "babel-loader": "8.0.2",
-    "babel-plugin-syntax-jsx": "6.18.0",
-    "babel-plugin-transform-runtime": "6.23.0",
+    "@babel/plugin-syntax-jsx": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.1.0",
     "babel-plugin-transform-vue-jsx": "3.7.0",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-stage-0": "6.24.1",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-stage-0": "7.0.0",
     "browser-sync": "2.24.7",
     "clean-webpack-plugin": "0.1.19",
     "copy-webpack-plugin": "4.5.2",
