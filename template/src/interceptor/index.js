@@ -2,8 +2,8 @@
  * Created by NieFZ on 2018/9/18.
  */
 import axios from 'axios';
-{{#UI}}
 
+{{#UI}}
 {{#if_eq UIConfig 'element-ui'}}
 import { Message } from 'element-ui';
 {{/if_eq}}

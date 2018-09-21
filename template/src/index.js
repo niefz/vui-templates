@@ -1,7 +1,7 @@
 /**
  * Created by niefz on 2018/8/27.
  */
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import Vue from 'vue';
 {{#router}}
