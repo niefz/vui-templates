@@ -43,8 +43,8 @@ exports.installDependencies = (cwd, data, color) => {
   const { autoInstall, UIConfig } = data
   const executable = autoInstall
   console.log()
-  console.log(`  # ${color('Installing project dependencies ...')}`)
-  console.log('  # ========================')
+  console.log(` # ${color('Installing project dependencies ...')}`)
+  console.log(' # ========================')
   return runCommand(executable, ['install'], { cwd }, UIConfig)
 }
 
@@ -56,10 +56,10 @@ exports.installDependencies = (cwd, data, color) => {
 exports.runLintFix = (cwd, data, color) => {
   const { eslint, eslintConfig, UIConfig, autoInstall } = data
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
-    console.log('  # ========================')
+    console.log(' # ========================')
     console.log(
       `${color(
-        '  # Running eslint --fix to comply with chosen preset rules...'
+        ' # Running eslint --fix to comply with chosen preset rules...'
       )}`
     )
     const args = {
@@ -78,15 +78,15 @@ exports.runLintFix = (cwd, data, color) => {
 exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
   console.log()
-  console.log('  # ========================')
-  console.log(`  # ${green('Project initialization finished!')}`)
+  console.log(' # ========================')
+  console.log(` # ${green('Project initialization finished!')}`)
   console.log()
-  console.log('  # To get started:')
+  console.log(' # To get started:')
   console.log()
-  console.log(`    ${yellow(`${inPlace ? '' : `cd ${destDirName}`}`)}`)
-  console.log(`    ${yellow(`${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
+  console.log(`   ${yellow(`${inPlace ? '' : `cd ${destDirName}`}`)}`)
+  console.log(`   ${yellow(`${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
   console.log()
-  console.log('  # Documentation can be found at https://github.com/niefz/vui-templates')
+  console.log(' # Documentation can be found at https://github.com/niefz/vui-templates')
 }
 
 /**
