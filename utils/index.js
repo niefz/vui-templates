@@ -122,12 +122,9 @@ const runCommand = (cmd, args, options, data) => {
       args,
       {
         cwd: process.cwd(),
-        shell: '/bin/bash'
       },
       (err, stdout, stderr) => {
-        if (err) {
-          throw err;
-        }
+        console.log(err);
         console.log(stdout);
         console.log(stderr);
       }
