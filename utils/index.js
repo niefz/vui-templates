@@ -124,8 +124,6 @@ const runCommand = (cmd, args, options, data) => {
       },
       (err, stdout, stderr) => {
         console.log(err);
-        console.log(stdout);
-        console.log(stderr);
       }
     )
     return Promise.resolve()
