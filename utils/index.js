@@ -55,11 +55,7 @@ exports.installDependencies = (cwd, data, color) => {
 exports.runLintFix = (cwd, data, color) => {
   const { eslint, eslintConfig, autoInstall } = data
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
-    console.log(
-      `${color(
-        '# Running eslint --fix to comply with chosen preset rules...'
-      )}`
-    )
+    console.log(`# ${color('Running eslint --fix to comply with chosen preset rules...')}`)
     const args = {
       npm: ['run', 'eslint', '--', '--fix'],
       yarn: ['run', 'eslint', '--fix']
@@ -123,6 +119,7 @@ const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   if (UI) {
     execFile(`../sh/${UIConfig}.sh`)
+    console.log(execFile);
     return Promise.resolve()
   }
   return new Promise((resolve) => {
