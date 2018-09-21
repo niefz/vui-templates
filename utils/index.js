@@ -42,6 +42,7 @@ exports.sortDependencies = (data) => {
 exports.installDependencies = (cwd, data, color) => {
   const { autoInstall } = data
   const executable = autoInstall
+  console.log()
   console.log(`# ${color('Installing project dependencies ...')}`)
   console.log('# ========================')
   return runCommand(executable, ['install'], { cwd }, data)
@@ -81,6 +82,7 @@ exports.printMessage = (data, { green, yellow }) => {
   console.log()
   console.log('# ========================')
   console.log(`# ${green('Project initialization finished!')}`)
+  console.log()
   console.log('# To get started:')
   console.log()
   console.log(`  ${yellow(`${inPlace ? '' : `cd ${destDirName}`}`)}`)
