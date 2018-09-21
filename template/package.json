@@ -10,9 +10,11 @@
     "url": ""
   },
   "scripts": {
+    {{#UI}}
     {{#if_eq UIConfig "element-ui"}}
     "build:theme": "et -c src/styles/_element-variables.scss",
     {{/if_eq}}
+    {{/UI}}
     "dev": "webpack-dev-server --config webpack.dev.config.js --progress --colors",
     "sync": "node browser.sync.config.js",
     "dist": "webpack --config webpack.dist.config.js --progress --colors",
@@ -34,10 +36,12 @@
     "sftp": "webpack --config sftp.config.js --progress --colors"
   },
   "dependencies": {
+    {{#UI}}
     {{#if_eq UIConfig "element-ui"}}
     "element-theme-chalk": "2.4.7",
     "element-ui": "2.4.7",
     {{/if_eq}}
+    {{/UI}}
     "vue": "2.5.17",
     {{#i18n}}
     "vue-i18n": "8.1.0",
@@ -133,7 +137,6 @@
     "babel-plugin-transform-vue-jsx": "3.7.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-0": "6.24.1",
-    "chalk": "2.4.1",
     "browser-sync": "2.24.7",
     "clean-webpack-plugin": "0.1.19",
     "copy-webpack-plugin": "4.5.2",
@@ -154,8 +157,6 @@
     "postcss-salad": "2.0.1",
     "postcss-url": "8.0.0",
     "sass-loader": "7.1.0",
-    "semver": "5.5.1",
-    "shelljs": "0.8.2",
     "uglifyjs-webpack-plugin": "2.0.1",
     "url-loader": "1.1.1",
     "vue-loader": "15.4.2",
