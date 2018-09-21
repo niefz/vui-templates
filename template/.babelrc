@@ -1,7 +1,7 @@
 {
   "presets": [
     [
-      "@babel/preset-env",
+      "@babel/env",
       {
         "modules": false,
         "targets": {
@@ -13,10 +13,10 @@
         }
       }
     ],
-    "@babel/preset-stage-0"
+    "@babel/stage-0"
   ],
   "plugins": [
-    "transform-vue-jsx",
+    "@vue/transform-vue-jsx",
     "@babel/transform-runtime"{{#UI}},
     {{#if_eq UIConfig "element-ui"}}
     [
