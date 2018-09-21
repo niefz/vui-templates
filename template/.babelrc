@@ -16,6 +16,7 @@
   ],
   "plugins": [
     "@vue/transform-vue-jsx",
+    "@babel/plugin-syntax-dynamic-import",
     "@babel/transform-runtime"{{#UI}},
     {{#if_eq UIConfig "element-ui"}}
     [

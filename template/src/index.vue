@@ -1,8 +1,5 @@
 <template>
   <div class="wrapper clearfix">
-    <img
-      src="/assets/images/logo.png"
-      alt="">
     <div
       class="main-wrapper">
       {{#router}}
