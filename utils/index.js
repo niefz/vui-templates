@@ -40,12 +40,12 @@ exports.sortDependencies = (data) => {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = (cwd, data, color) => {
-  const { autoInstall, UIConfig } = data
+  const { autoInstall } = data
   const executable = autoInstall
   console.log()
   console.log(` # ${color('Installing project dependencies ...')}`)
   console.log(' # ========================')
-  return runCommand(executable, ['install'], { cwd }, UIConfig)
+  return runCommand(executable, ['install'], { cwd }, data)
 }
 
 /**
@@ -66,7 +66,7 @@ exports.runLintFix = (cwd, data, color) => {
       npm: ['run', 'eslint', '--', '--fix'],
       yarn: ['run', 'eslint', '--fix']
     }
-    return runCommand(autoInstall, args[autoInstall], { cwd }, UIConfig)
+    return runCommand(autoInstall, args[autoInstall], { cwd }, data)
   }
   return Promise.resolve()
 }
@@ -120,12 +120,13 @@ const installMsg = (data) => {
  * @param {string} cmd
  * @param {array<string>} args
  * @param {object} options
- * @param {string} ui
+ * @param {object} data
  */
-const runCommand = (cmd, args, options, ui) => {
+const runCommand = (cmd, args, options, data) => {
+  const { UI, UIConfig } = data
   return new Promise((resolve) => {
-    if (ui) {
-      execFile(`../sh/${ui}.sh`,
+    if (UI) {
+      execFile(`../sh/${UIConfig}.sh`,
         {
           cwd: process.cwd(),
         },
