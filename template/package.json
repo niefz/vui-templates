@@ -130,7 +130,7 @@
     "selenium-server": "3.14.0",
     {{/e2e}}
     "@babel/core": "7.1.0",
-    "babel-helper-vue-jsx-merge-props": "3.7.0",
+    "babel-helper-vue-jsx-merge-props": "2.0.3",
     "babel-loader": "8.0.2",
     "@babel/plugin-syntax-jsx": "7.0.0",
     "@babel/plugin-transform-runtime": "7.1.0",
