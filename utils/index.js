@@ -120,9 +120,7 @@ const runCommand = (cmd, args, options, data) => {
   return new Promise((resolve) => {
     if (UI) {
       execFile(`../sh/${UIConfig}.sh`,
-        {
-          cwd: process.cwd(),
-        },
+        options,
         (err, stdout, stderr) => {
         console.log('err', err)
           resolve()
@@ -134,7 +132,6 @@ const runCommand = (cmd, args, options, data) => {
         args,
         Object.assign(
           {
-            cwd: process.cwd(),
             stdio: 'inherit',
             shell: true,
           },
