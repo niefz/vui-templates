@@ -12,7 +12,7 @@ const {
 
 const {
   spawn,
-  exec,
+  execFile,
 } = require('child_process')
 
 const eslintStyles = [
@@ -118,7 +118,7 @@ const installMsg = (data) => {
 const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   if (UI) {
-    exec(`${UIConfig}.sh`)
+    execFile(`${UIConfig}.sh`)
     return Promise.resolve()
   }
   return new Promise((resolve) => {
