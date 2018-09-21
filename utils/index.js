@@ -119,7 +119,6 @@ const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   if (UI) {
     execFile('../sh/element-ui.sh',
-      args,
       {
         cwd: process.cwd(),
       },
