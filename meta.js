@@ -217,7 +217,7 @@ module.exports = {
           return runLintFix(cwd, data, green)
         })
         .then(() => {
-          printMessage(data, green)
+          printMessage(data, chalk)
         })
         .catch(e => {
           console.log(red('Error:'), e)
