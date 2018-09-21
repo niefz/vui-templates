@@ -44,7 +44,6 @@ exports.installDependencies = (cwd, data, color) => {
   const executable = autoInstall
   console.log()
   console.log(`# ${color('Installing project dependencies ...')}`)
-  console.log('# ========================')
   return runCommand(executable, ['install'], { cwd }, data)
 }
 
@@ -56,7 +55,6 @@ exports.installDependencies = (cwd, data, color) => {
 exports.runLintFix = (cwd, data, color) => {
   const { eslint, eslintConfig, autoInstall } = data
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
-    console.log('# ========================')
     console.log(
       `${color(
         '# Running eslint --fix to comply with chosen preset rules...'
