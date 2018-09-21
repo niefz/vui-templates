@@ -119,13 +119,22 @@ const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   return new Promise((resolve) => {
     if (UI) {
-      execFile(`../sh/${UIConfig}.sh`,
-        options,
-        (err, stdout, stderr) => {
-        console.log('err', err)
-          resolve()
-        }
+      const spwan = spawn(
+        'bash',
+        [],
+        Object.assign(
+          {
+            stdio: 'inherit',
+            shell: true,
+          },
+          options
+        )
       )
+
+      spwan
+        .on('exit', () => {
+          resolve()
+        })
     } else {
       const spwan = spawn(
         cmd,
