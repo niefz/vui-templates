@@ -42,10 +42,9 @@ exports.sortDependencies = (data) => {
 exports.installDependencies = (cwd, data, color) => {
   const { autoInstall, UIConfig } = data
   const executable = autoInstall
-  console.log()
   console.log(` # ${color('Installing project dependencies ...')}`)
+  console.log(' # ========================')
   console.log()
-  console.log(' # ========================\n')
   return runCommand(executable, ['install'], { cwd }, UIConfig)
 }
 
@@ -58,12 +57,12 @@ exports.runLintFix = (cwd, data, color) => {
   const { eslint, eslintConfig, UIConfig, autoInstall } = data
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
     console.log(
-      `\n\n${color(
+      `${color(
         ' # Running eslint --fix to comply with chosen preset rules...'
       )}`
     )
+    console.log(' # ========================')
     console.log()
-    console.log('# ========================\n')
     const args = {
       npm: ['run', 'eslint', '--', '--fix'],
       yarn: ['run', 'eslint', '--fix']
@@ -85,7 +84,7 @@ exports.printMessage = (data, { green, yellow }) => {
   console.log()
   console.log(' # To get started:')
   console.log()
-  console.log(` ${yellow(`${inPlace ? '' : `cd ${destDirName}\n`}${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
+  console.log(`   ${yellow(`${inPlace ? '' : `cd ${destDirName}\n`}   ${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
   console.log()
   console.log(' # Documentation can be found at https://github.com/niefz/vui-templates')
 }
