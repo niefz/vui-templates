@@ -80,16 +80,15 @@ exports.runLintFix = (cwd, data, color) => {
  */
 exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
+  console.log()
   console.log('  # ========================')
-  console.log('  # ========================')
+  console.log()
   console.log(`  # ${green('Project initialization finished!')}`)
   console.log()
   console.log('  # To get started:')
   console.log()
   console.log(`    ${yellow(`${inPlace ? '' : `cd ${destDirName}`}`)}`)
-  console.log(`    ${yellow(`${installMsg(data)}`)}`)
-  console.log(`    ${yellow(`${eslintMsg(data)}`)}`)
-  console.log(`    ${yellow('npm run dev')}`)
+  console.log(`    ${yellow(`${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
   console.log()
   console.log('  # Documentation can be found at https://github.com/niefz/vui-templates')
 }
@@ -104,7 +103,7 @@ const eslintMsg = (data) => {
   return !autoInstall
   && eslint
   && eslintStyles.indexOf(eslintConfig) !== -1
-    ? '    npm run eslint -- --fix (or for yarn: yarn run eslint --fix)'
+    ? '   npm run eslint -- --fix (or for yarn: yarn run eslint --fix)'
     : ''
 }
 
@@ -115,7 +114,7 @@ const eslintMsg = (data) => {
  */
 const installMsg = (data) => {
   const { autoInstall } = data
-  return !autoInstall ? '    npm install (or if using yarn: yarn)' : ''
+  return !autoInstall ? '   npm install (or if using yarn: yarn)' : ''
 }
 
 /**
