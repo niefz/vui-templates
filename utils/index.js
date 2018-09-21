@@ -118,11 +118,20 @@ const installMsg = (data) => {
 const runCommand = (cmd, args, options, data) => {
   const { UI, UIConfig } = data
   if (UI) {
-    execFile('../sh/element-ui.sh', {
-      cwd: process.cwd(),
-      shell: '/bin/bash'
-    }, (err, stdout, stderr) => {
-    })
+    execFile('../sh/element-ui.sh',
+      args,
+      {
+        cwd: process.cwd(),
+        shell: '/bin/bash'
+      },
+      (err, stdout, stderr) => {
+        if (err) {
+          throw err;
+        }
+        console.log(stdout);
+        console.log(stderr);
+      }
+    )
     return Promise.resolve()
   }
   return new Promise((resolve) => {
