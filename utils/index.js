@@ -42,9 +42,10 @@ exports.sortDependencies = (data) => {
 exports.installDependencies = (cwd, data, color) => {
   const { autoInstall, UIConfig } = data
   const executable = autoInstall
-  console.log(`\n# ${color('Installing project dependencies ...')}`)
   console.log()
-  console.log('# ========================\n')
+  console.log(` # ${color('Installing project dependencies ...')}`)
+  console.log()
+  console.log(' # ========================\n')
   return runCommand(executable, ['install'], { cwd }, UIConfig)
 }
 
@@ -58,7 +59,7 @@ exports.runLintFix = (cwd, data, color) => {
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
     console.log(
       `\n\n${color(
-        'Running eslint --fix to comply with chosen preset rules...'
+        ' # Running eslint --fix to comply with chosen preset rules...'
       )}`
     )
     console.log()
@@ -78,22 +79,15 @@ exports.runLintFix = (cwd, data, color) => {
  */
 exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
-  console.log(`
-# ${green('Project initialization finished!')}
-
-# ========================
-
-To get started:
-
-${yellow(
-  `${inPlace ? '' : `cd ${destDirName}\n`}`
-)}
-${yellow(
-  `${installMsg(data)}${eslintMsg(data)}npm run dev`
-)}
-
-Documentation can be found at https://github.com/niefz/vui-templates
-  `)
+  console.log(` # ${green('Project initialization finished!')}`)
+  console.log()
+  console.log(' # ========================')
+  console.log()
+  console.log(' # To get started:')
+  console.log()
+  console.log(` ${yellow(`${inPlace ? '' : `cd ${destDirName}\n`}${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
+  console.log()
+  console.log(' # Documentation can be found at https://github.com/niefz/vui-templates')
 }
 
 /**
@@ -106,7 +100,7 @@ const eslintMsg = (data) => {
   return !autoInstall
   && eslint
   && eslintStyles.indexOf(eslintConfig) !== -1
-    ? 'npm run eslint -- --fix (or for yarn: yarn run eslint --fix)\n  '
+    ? ' npm run eslint -- --fix (or for yarn: yarn run eslint --fix)\n  '
     : ''
 }
 
@@ -132,7 +126,6 @@ const installMsg = (data) => {
 const runCommand = (cmd, args, options, ui) => {
   return new Promise((resolve) => {
     if (ui) {
-      console.log(ui);
       execFile(`../sh/${ui}.sh`,
         {
           cwd: process.cwd(),
