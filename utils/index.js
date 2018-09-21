@@ -80,14 +80,20 @@ exports.runLintFix = (cwd, data, color) => {
 exports.printMessage = (data, { green, yellow }) => {
   const { inPlace, destDirName } = data
   console.log(`
-    # ${green('Project initialization finished!')}
-    # ========================
-    
-    To get started:
-    
-    ${yellow(`${inPlace ? '' : `cd ${destDirName}\n  `}${installMsg(data)}${eslintMsg(data)}npm run dev`)}
-    
-    Documentation can be found at https://github.com/niefz/vui-templates
+  # ${green('Project initialization finished!')}
+  # ========================
+  
+  To get started:
+  
+  ${yellow(
+    `${inPlace ? '' : `cd ${destDirName}\n`}`
+  )}
+  
+  ${yellow(
+    `${installMsg(data)}${eslintMsg(data)}npm run dev`
+  )}
+  
+  Documentation can be found at https://github.com/niefz/vui-templates
   `)
 }
 
