@@ -44,7 +44,7 @@ exports.installDependencies = (cwd, data, color) => {
   const executable = autoInstall
   let args = ['install']
   if (UI) {
-    if (UILibrary === 'element-ui') {
+    if (UILibrary.toString() === 'element-ui') {
       args = [
         'install', '-g', 'element-theme',
         '&&',
@@ -66,13 +66,12 @@ exports.installDependencies = (cwd, data, color) => {
  */
 exports.runLintFix = (cwd, data, color) => {
   const { eslint, eslintConfig, autoInstall } = data
+  const executable = autoInstall
   if (eslint && eslintStyles.indexOf(eslintConfig) !== -1) {
     console.log(`# ${color('Running eslint --fix to comply with chosen preset rules...')}`)
-    const args = {
-      npm: ['run', 'eslint', '--', '--fix'],
-      yarn: ['run', 'eslint', '--fix']
-    }
-    return runCommand(autoInstall, args[autoInstall], { cwd })
+    const args = executable.toString() === 'npm'
+      ? ['run', 'eslint', '--', '--fix'] : ['run', 'eslint', '--fix']
+    return runCommand(executable, args, { cwd })
   }
   return Promise.resolve()
 }
