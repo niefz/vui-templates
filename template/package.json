@@ -38,96 +38,96 @@
   "dependencies": {
     {{#UI}}
     {{#if_eq UILibrary "element-ui"}}
-    "element-theme-chalk": "^2.4.7",
-    "element-ui": "^2.4.7",
+    "element-theme-chalk": "2.4.7",
+    "element-ui": "2.4.7",
     {{/if_eq}}
     {{/UI}}
-    "vue": "^2.5.17",
+    "vue": "2.5.17",
     {{#i18n}}
-    "vue-i18n": "^8.1.0",
+    "vue-i18n": "8.1.0",
     {{/i18n}}
     {{#router}}
-    "vue-router": "^3.0.1",
+    "vue-router": "3.0.1",
     {{/router}}
     {{#vuex}}
-    "vuex": "^3.0.1",
+    "vuex": "3.0.1",
     {{/vuex}}
-    "axios": "^0.18.0",
-    "@babel/polyfill": "^7.0.0"
+    "axios": "0.18.0",
+    "@babel/polyfill": "7.0.0"
   },
   "devDependencies": {
     {{#htmllint}}
-    "htmllint-loader": "^2.1.4",
+    "htmllint-loader": "2.1.4",
     {{/htmllint}}
     {{#stylelint}}
-    "stylelint": "^9.5.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^1.0.0",
-    "stylelint-scss": "^3.3.0",
-    "stylelint-webpack-plugin": "^0.10.5",
+    "stylelint": "9.5.0",
+    "stylelint-config-standard": "18.2.0",
+    "stylelint-order": "1.0.0",
+    "stylelint-scss": "3.3.0",
+    "stylelint-webpack-plugin": "0.10.5",
     {{/stylelint}}
     {{#eslint}}
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.6.0",
-    "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.1.0",
-    "eslint-plugin-vue": "^4.7.1",
+    "babel-eslint": "9.0.0",
+    "eslint": "5.6.0",
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-loader": "2.1.0",
+    "eslint-plugin-vue": "4.7.1",
     {{#if_eq eslintConfig "airbnb"}}
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-import-resolver-webpack": "^0.10.1",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-import-resolver-webpack": "0.10.1",
+    "eslint-plugin-import": "2.14.0",
     {{/if_eq}}
     {{#if_eq eslintConfig "standard"}}
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^7.0.1",
+    "eslint-config-standard": "12.0.0",
+    "eslint-plugin-promise": "4.0.1",
+    "eslint-plugin-standard": "4.0.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
     {{/if_eq}}
     {{/eslint}}
     {{#UI}}
     {{#if_eq UILibrary "element-ui"}}
-    "babel-plugin-component": "^1.9.1",
+    "babel-plugin-component": "1.9.1",
     {{/if_eq}}
     {{#if_eq UILibrary "iview"}}
-    "babel-plugin-import": "^1.9.1",
+    "babel-plugin-import": "1.9.1",
     {{/if_eq}}
     {{/UI}}
     {{#if_eq runner "jest"}}
-    "babel-jest": "^23.6.0",
-    "babel-plugin-dynamic-import-node": "^2.1.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "jest": "^23.6.0",
-    "jest-serializer-vue": "^2.0.2",
-    "vue-jest": "^2.6.0",
+    "babel-jest": "23.6.0",
+    "babel-plugin-dynamic-import-node": "2.1.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.26.2",
+    "jest": "23.6.0",
+    "jest-serializer-vue": "2.0.2",
+    "vue-jest": "2.6.0",
     {{/if_eq}}
     {{#if_eq runner "karma"}}
-    "babel-plugin-istanbul": "^5.0.1",
-    "chai": "^4.1.2",
-    "cross-env": "^5.2.0",
-    "inject-loader": "^4.0.1",
-    "karma": "^3.0.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.2",
-    "karma-mocha": "^1.3.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-phantomjs-shim": "^1.5.0",
-    "karma-sinon-chai": "^2.0.2",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "^3.0.5",
-    "mocha": "^5.2.0",
-    "phantomjs-prebuilt": "^2.1.16",
-    "sinon": "^6.3.4",
-    "sinon-chai": "^3.2.0",
+    "babel-plugin-istanbul": "5.0.1",
+    "chai": "4.1.2",
+    "cross-env": "5.2.0",
+    "inject-loader": "4.0.1",
+    "karma": "3.0.0",
+    "karma-chrome-launcher": "2.2.0",
+    "karma-coverage": "1.1.2",
+    "karma-mocha": "1.3.0",
+    "karma-phantomjs-launcher": "1.0.4",
+    "karma-phantomjs-shim": "1.5.0",
+    "karma-sinon-chai": "2.0.2",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-spec-reporter": "0.0.32",
+    "karma-webpack": "3.0.5",
+    "mocha": "5.2.0",
+    "phantomjs-prebuilt": "2.1.16",
+    "sinon": "6.3.4",
+    "sinon-chai": "3.2.0",
     {{/if_eq}}
     {{#e2e}}
-    "@babel/register": "^7.0.0",
-    "chromedriver": "^2.41.0",
-    "cross-spawn": "^6.0.5",
-    "nightwatch": "^1.0.10",
-    "nightwatch-helpers": "^1.2.0",
-    "selenium-server": "^3.14.0",
+    "@babel/register": "7.0.0",
+    "chromedriver": "2.41.0",
+    "cross-spawn": "6.0.5",
+    "nightwatch": "1.0.10",
+    "nightwatch-helpers": "1.2.0",
+    "selenium-server": "3.14.0",
     {{/e2e}}
     "@babel/core": "7.1.0",
     "@vue/babel-helper-vue-jsx-merge-props": "0.1.0",
