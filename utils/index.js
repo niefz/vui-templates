@@ -46,9 +46,9 @@ exports.installDependencies = (cwd, data, color) => {
   if (UI) {
     if (UILibrary.toString() === 'element-ui') {
       args = [
-        'install', '-g', 'element-theme',
+        'install',
         '&&',
-        executable, 'install',
+        executable, 'install', '-g', 'element-theme',
         '&&',
         'et', '-i', 'src/styles/_element-variables.scss'
       ]
