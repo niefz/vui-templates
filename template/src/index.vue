@@ -12,7 +12,7 @@
 </template>
 <script>
   {{#unless router}}
-  import HelloWorld from './components/hello-world';
+  import HelloWorld from './components/hello-world/hello-world';
 
   {{/unless}}
   export default {

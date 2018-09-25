@@ -18,7 +18,20 @@ const APP_PATH = resolve(__dirname, 'src');
 
 module.exports = webpackMerge({
   entry: {
-    vendors: ['axios', 'babel-polyfill', 'vue', 'vue-i18n', 'vue-router', 'vuex'],
+    vendors: [
+      'axios',
+      'babel-polyfill',
+      'vue',
+      {{#i18n}}
+      'vue-i18n',
+      {{/i18n}}
+      {{#router}}
+      'vue-router',
+      {{/router}}
+      {{#vuex}}
+      'vuex',
+      {{/vuex}}
+    ],
     index: 'src/index.js'
   },
   output: {
