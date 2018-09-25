@@ -39,6 +39,10 @@ module.exports = webpackMerge(webpackBaseConfig, {
   },
   plugins: [
     new CleanWebpackPlugin(BUILD_PATH),
+    // keep module.id stable when vendor modules does not change
+    new webpack.HashedModuleIdsPlugin(),
+    // enable scope hoisting
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([
       {
         from: `${APP_PATH}/assets/`,

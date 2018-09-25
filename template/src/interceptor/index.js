@@ -3,28 +3,29 @@
  */
 import axios from 'axios';
 {{#UI}}
-{{#if_eq UIConfig 'element-ui'}}
+{{#if_eq UILibrary 'element-ui'}}
 import { Message } from 'element-ui';
 {{/if_eq}}
 {{/UI}}
 
 axios.defaults.baseURL = '/gateway';
 
-axios.interceptors.response.use((response) => {
-  if (response && response.data && response.data.code) {
-    if (response.data.code !== '0') {
+axios.interceptors.response.use((res) => {
+  if (res && res.data && res.data.code) {
+    if (res.data.code !== '0') {
+      console.log(res);
       {{#UI}}
-      {{#if_eq UIConfig 'element-ui'}}
+      {{#if_eq UILibrary 'element-ui'}}
       Message({
         type: 'error',
-        message: response.data.msg,
+        message: res.data.msg,
         duration: '1500',
       });
       {{/if_eq}}
       {{/UI}}
     }
   }
-  return response;
+  return res;
 });
 
 export default axios;

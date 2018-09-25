@@ -47,6 +47,6 @@ module.exports = webpackMerge(webpackBaseConfig, {
     new FriendlyErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ]
 });

@@ -105,7 +105,7 @@ module.exports = {
       type: 'confirm',
       message: 'Set up UI library',
     },
-    UIConfig: {
+    UILibrary: {
       when: 'UI',
       type: 'list',
       message: 'Pick a UI library',
@@ -190,8 +190,8 @@ module.exports = {
     '.stylelintignore': 'stylelint',
     '.eslintrc': 'eslint',
     '.eslintignore': 'eslint',
-    'src/styles/element.scss': 'UI && UIConfig === "element-ui"',
-    'src/styles/iview.less': 'UI && UIConfig === "iview"',
+    'src/styles/element.scss': 'UI && UILibrary === "element-ui"',
+    'src/styles/iview.less': 'UI && UILibrary === "iview"',
     'webpack.test.config.js': 'unit && runner === "karma"',
     'test/unit/**/*': 'unit',
     'test/unit/index.js': 'unit && runner === "karma"',

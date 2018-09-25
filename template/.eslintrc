@@ -47,9 +47,26 @@
   {{/if_eq}}
   "rules": {
     {{#if_eq eslintConfig "airbnb"}}
-    "import/extensions": "off",
+    // don't require .vue extension when importing
+    "import/extensions": ["error", "always", {
+      "js": "never",
+      "vue": "never"
+    }],
+    // disallow reassignment of function parameters
+    // disallow parameter object manipulation except for specific exclusions
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": [
+        "state", // for vuex state
+        "acc", // for reduce accumulators
+        "e" // for e.returnvalue
+      ]
+    }],
     {{/if_eq}}
-    "import/no-unresolved": "off",
+    {{#if_eq lintConfig "standard"}}
+    // allow async-await
+    "generator-star-spacing": "off",
+    {{/if_eq}}
     "linebreak-style": "off",
     "no-console": "off"
   },
@@ -59,8 +76,6 @@
         "*.vue"
       ],
       "rules": {
-        "indent": "off",
-        "vue/no-parsing-error": "off"
       }
     }
   ]

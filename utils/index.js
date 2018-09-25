@@ -40,11 +40,11 @@ exports.sortDependencies = (data) => {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = (cwd, data, color) => {
-  const { autoInstall, UI, UIConfig } = data
+  const { autoInstall, UI, UILibrary } = data
   const executable = autoInstall
   let args = ['install']
   if (UI) {
-    if (UIConfig === 'element-ui') {
+    if (UILibrary === 'element-ui') {
       args = [
         'install', '-g', 'element-theme',
         '&&',

@@ -12,13 +12,14 @@
           ]
         }
       }
-    ]
+    ],
+    "@babel/preset-stage-0"
   ],
   "plugins": [
     "@vue/transform-vue-jsx",
-    "@babel/plugin-syntax-dynamic-import",
-    "@babel/transform-runtime"{{#UI}},
-    {{#if_eq UIConfig "element-ui"}}
+    "@babel/transform-runtime",
+    "@babel/plugin-syntax-dynamic-import"{{#UI}},
+    {{#if_eq UILibrary "element-ui"}}
     [
       "component",
       {
@@ -27,7 +28,7 @@
       }
     ]
     {{/if_eq}}
-    {{#if_eq UIConfig "iview"}}
+    {{#if_eq UILibrary "iview"}}
     [
       "import",
       {
@@ -37,23 +38,6 @@
     ]
     {{/if_eq}}
     {{/UI}}
-  ]{{#if_or unit e2e}},
-  "env": {
-    "test": {
-      "presets": [
-        "env",
-        "stage-0"
-      ]{{#if_eq runner "karma"}},
-      "plugins": [
-        "transform-vue-jsx",
-        "istanbul"
-      ]{{/if_eq}}{{#if_eq runner "jest"}},
-      "plugins": [
-        "transform-vue-jsx",
-        "transform-es2015-modules-commonjs",
-        "dynamic-import-node"
-      ]{{/if_eq}}
-    }
-  }{{/if_or}},
+  ],
   "comments": false
 }

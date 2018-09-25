@@ -8,10 +8,6 @@ body {
   color: $--color-text-regular;
 }
 
-.w {
-  padding: 0 20px;
-}
-
 .clearfix::before,
 .clearfix::after {
   position: relative;
@@ -29,10 +25,6 @@ body {
 
 .absolute {
   position: absolute;
-}
-
-.bg-grey {
-  background-color: $--color-bg;
 }
 
 .fl {
@@ -61,6 +53,10 @@ body {
   padding: 16px;
 }
 
+.m-16 {
+  margin: 16px;
+}
+
 .mt-16 {
   margin-top: 16px;
 }
@@ -69,14 +65,10 @@ body {
   margin-bottom: 16px;
 }
 
-.forbidden {
-  color: $color-FAA51F;
+.warning {
+  color: $--color-warning;
 }
 
-.iconfont {
-  font-family: 'iconfont', sans-serif;
-}
-
-@font-face {
-  font-family: 'iconfont';
+.w {
+  padding: 0 20px;
 }

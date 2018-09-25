@@ -1,7 +1,12 @@
 /**
  * Created by niefz on 2018/8/27.
  */
-export default {
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+export default new VueRouter({
   mode: 'hash',
   linkActiveClass: 'active',
   routes: [
@@ -13,4 +18,4 @@ export default {
       }, 'hello-world'),
     },
   ],
-};
+});

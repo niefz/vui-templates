@@ -6,8 +6,8 @@ Vue.config.productionTip = false;
 const testsContext = require.context('./specs', true, /\.spec$/);
 testsContext.keys().forEach(testsContext);
 
-// require all src files except main.js for coverage.
+// require all src files except promise.min.js and un_support.min.js  for coverage.
 // you can also change this to match only the subset of files that
 // you want coverage for.
-const srcContext = require.context('../../src', true, /^\.\/(?![main|promise.min|un_support.min](\.js)?$)/);
+const srcContext = require.context('../../src', true, /^\.\/(?![promise.min|un_support.min](\.js)?$)/);
 srcContext.keys().forEach(srcContext);
