@@ -87,7 +87,7 @@
     {{/eslint}}
     {{#UI}}
     {{#if_eq UILibrary "element-ui"}}
-    "babel-plugin-component": "1.9.1",
+    "babel-plugin-component": "1.1.1",
     {{/if_eq}}
     {{#if_eq UILibrary "iview"}}
     "babel-plugin-import": "1.9.1",
