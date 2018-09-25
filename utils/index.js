@@ -40,11 +40,23 @@ exports.sortDependencies = (data) => {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = (cwd, data, color) => {
-  const { autoInstall } = data
+  const { autoInstall, UI, UIConfig } = data
   const executable = autoInstall
+  let args = ['install']
+  if (UI) {
+    if (UIConfig === 'element-ui') {
+      args = [
+        'install', '-g', 'element-theme',
+        '&&',
+        executable, 'install',
+        '&&',
+        'et', '-i', 'src/styles/_element-variables.scss'
+      ]
+    }
+  }
   console.log()
   console.log(`# ${color('Installing project dependencies ...')}`)
-  return runCommand(executable, ['install'], { cwd }, data)
+  return runCommand(executable, args, { cwd })
 }
 
 /**
@@ -60,7 +72,7 @@ exports.runLintFix = (cwd, data, color) => {
       npm: ['run', 'eslint', '--', '--fix'],
       yarn: ['run', 'eslint', '--fix']
     }
-    return runCommand(autoInstall, args[autoInstall], { cwd }, {})
+    return runCommand(autoInstall, args[autoInstall], { cwd })
   }
   return Promise.resolve()
 }
@@ -113,38 +125,25 @@ const installMsg = (data) => {
  * @param {string} cmd
  * @param {array<string>} args
  * @param {object} options
- * @param {object} data
  */
-const runCommand = (cmd, args, options, data) => {
-  const { UI, UIConfig } = data
+const runCommand = (cmd, args, options) => {
   return new Promise((resolve) => {
-    if (UI) {
-      console.log(options)
-      execFile(`../sh/${UIConfig}.sh`,
-        options,
-        (err, stdout, stderr) => {
-          console.log(err)
-          resolve()
-        }
+    const spwan = spawn(
+      cmd,
+      args,
+      Object.assign(
+        {
+          stdio: 'inherit',
+          shell: true,
+        },
+        options
       )
-    } else {
-      const spwan = spawn(
-        cmd,
-        args,
-        Object.assign(
-          {
-            stdio: 'inherit',
-            shell: true,
-          },
-          options
-        )
-      )
+    )
 
-      spwan
-        .on('exit', () => {
-          resolve()
-        })
-    }
+    spwan
+      .on('exit', () => {
+        resolve()
+      })
   })
 }
 
