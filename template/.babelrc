@@ -12,13 +12,15 @@
           ]
         }
       }
-    ],
-    "@babel/preset-stage-0"
+    ]
   ],
   "plugins": [
     "@vue/transform-vue-jsx",
     "@babel/transform-runtime",
-    "@babel/plugin-syntax-dynamic-import"{{#UI}},
+    "@babel/plugin-syntax-dynamic-import",
+    [
+      "@babel/plugin-proposal-function-bind"
+    ]{{#UI}},
     {{#if_eq UILibrary "element-ui"}}
     [
       "component",
