@@ -7,10 +7,10 @@
         :alt="exception">
       <div class="exception-inner--content">
         <h1>
-          <slot name="title">{{ exception }}</slot>
+          <slot name="title">\{{ exception }}</slot>
         </h1>
         <h2>
-          <slot name="desc">{{ exceptionTip }}</slot>
+          <slot name="desc">\{{ exceptionTip }}</slot>
         </h2>
         <slot/>
       </div>
