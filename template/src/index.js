@@ -16,7 +16,7 @@ import { i18n, loadLanguageAsync } from './i18n';
 {{/i18n}}
 import './less/reset.less';
 import './less/common.less';
-import './less/theme/iview.css';
+import './less/iview.less';
 
 import App from './index.vue';
 

@@ -10,7 +10,6 @@
     "url": ""
   },
   "scripts": {
-    "build:theme": "iview-theme build -o src/less/theme/",
     "dev": "webpack-dev-server --config webpack.dev.config.js --progress --colors",
     "sync": "node browser.sync.config.js",
     "dist": "webpack --config webpack.dist.config.js --progress --colors",
