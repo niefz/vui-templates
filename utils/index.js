@@ -82,6 +82,7 @@ exports.printMessage = (data, { green, yellow }) => {
   console.log('# To get started:')
   console.log()
   console.log(`  ${yellow(`${inPlace ? '' : `cd ${destDirName}`}`)}`)
+  console.log(`  ${yellow('npm run build:theme')}`)
   console.log(`  ${yellow(`${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
   console.log()
   console.log('# Documentation can be found at https://github.com/niefz/vui-templates')
