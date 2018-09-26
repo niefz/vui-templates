@@ -7,13 +7,9 @@ import { Message } from 'element-ui';
 axios.defaults.baseURL = '/';
 
 axios.interceptors.request.use(
-  (config) => {
-    return config;
-  },
-  (err) => {
-    return Promise.reject(err);
-  },
-)
+  config => config,
+  err => Promise.reject(err),
+);
 
 axios.interceptors.response.use(
   (res) => {
@@ -34,7 +30,7 @@ axios.interceptors.response.use(
       message: err,
       duration: '1500',
     });
-    return Promise.reject(err)
+    return Promise.reject(err);
   },
 );
 
