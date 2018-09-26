@@ -1,13 +1,10 @@
 <template>
   <div class="wrapper clearfix">
-    <div
-      class="main-wrapper">
-      {{#router}}
-      <router-view/>
-      {{else}}
-      <HelloWorld/>
-      {{/router}}
-    </div>
+    {{#router}}
+    <router-view/>
+    {{else}}
+    <HelloWorld/>
+    {{/router}}
   </div>
 </template>
 <script>
@@ -28,9 +25,4 @@
 </script>
 <style lang="less" scoped>
   @import "./less/_variables.less";
-
-  .main-wrapper {
-    margin-top: 60px;
-    margin-left: 200px;
-  }
 </style>
