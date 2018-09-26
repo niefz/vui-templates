@@ -43,16 +43,25 @@ exports.installDependencies = (cwd, data, color) => {
   const { autoInstall, UI, UILibrary } = data
   const executable = autoInstall
   let args = ['install']
-  if (UI) {
-    if (UILibrary.toString() === 'element-ui') {
+  switch (UILibrary) {
+    case 'element-ui':
       args = [
         'install',
         '&&',
         executable, 'install', '-g', 'element-theme',
         '&&',
-        'et', '-i', 'src/styles/_element-variables.scss'
+        'et', '-i', 'src/sass/_element-variables.scss'
       ]
-    }
+      break
+    case 'iview':
+      args = [
+        'install',
+        '&&',
+        executable, 'install', '-g', 'iview-theme',
+        '&&',
+        'iview-theme', 'init', 'theme'
+      ]
+      break
   }
   console.log()
   console.log(`# ${color('Installing project dependencies ...')}`)

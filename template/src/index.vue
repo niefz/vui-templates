@@ -24,7 +24,11 @@
   };
 </script>
 <style lang="scss" scoped>
-  @import "./styles/variables";
+  {{#unless UILibrary 'iview'}}
+  @import "./less/_variables.less";
+  {{else}}
+  @import "./sass/variables";
+  {{/unless}}
 
   .main-wrapper {
     margin-top: 60px;

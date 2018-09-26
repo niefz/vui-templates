@@ -12,7 +12,7 @@
   "scripts": {
     {{#UI}}
     {{#if_eq UILibrary "element-ui"}}
-    "build:theme": "et -c src/styles/_element-variables.scss",
+    "build:theme": "et -c src/sass/_element-variables.scss",
     {{/if_eq}}
     {{/UI}}
     "dev": "webpack-dev-server --config webpack.dev.config.js --progress --colors",

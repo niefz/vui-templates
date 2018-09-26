@@ -14,12 +14,19 @@ import store from './stores';
 {{#i18n}}
 import { i18n, loadLanguageAsync } from './i18n';
 {{/i18n}}
-import './styles/reset.scss';
-import './styles/common.scss';
 {{#UI}}
-{{#if_eq UILibrary 'element-ui'}}
-import './styles/element.scss';
+{{#if_eq UILibrary 'iview'}}
+import './less/reset.less';
+import './less/common.less';
+import './less/iview.less';
 {{/if_eq}}
+{{else}}
+import './sass/reset.scss';
+import './sass/common.scss';
+{{#if_eq UILibrary 'element-ui'}}
+import './sass/element.scss';
+{{/if_eq}}
+{{else}}
 {{/UI}}
 
 import App from './index.vue';
