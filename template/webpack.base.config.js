@@ -141,7 +141,7 @@ module.exports = webpackMerge({
     ]
   },
   resolve: {
-    extensions: ['.vue', '.js', '.scss', '.less'],
+    extensions: ['.vue', '.js', '.scss'],
     alias: {
       'vue': 'vue/dist/vue.js',
       'src': APP_PATH
