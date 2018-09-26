@@ -14,9 +14,9 @@ import store from './stores';
 {{#i18n}}
 import { i18n, loadLanguageAsync } from './i18n';
 {{/i18n}}
-import './styles/reset.scss';
-import './styles/common.scss';
-import './styles/element.scss';
+import './sass/reset.scss';
+import './sass/common.scss';
+import './sass/element.scss';
 
 import App from './index.vue';
 
