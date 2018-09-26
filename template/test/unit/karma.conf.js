@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Wed Aug 29 2018 15:46:45 GMT+0800 (CST)
+// Generated on Tue Sep 18 2018 15:46:45 GMT+0800 (CST)
 
 const webpackConfig = require('../../webpack.test.config');
 

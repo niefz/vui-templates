@@ -1,3 +1,2 @@
 theme/
-src/styles/_element-variables.scss
-src/styles/_iview-variables.less
+src/sass/_element-variables.scss

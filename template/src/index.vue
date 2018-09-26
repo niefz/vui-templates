@@ -16,7 +16,10 @@
 
   {{/unless}}
   export default {
-    {{#router}}{{else}}
+    {{#router}}
+    components: {
+    },
+    {{else}}
     components: {
       HelloWorld,
     },

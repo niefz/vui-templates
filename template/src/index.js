@@ -1,5 +1,5 @@
 /**
- * Created by niefz on 2018/8/27.
+ * Created by niefz on 2018/9/18.
  */
 import '@babel/polyfill';
 
@@ -16,11 +16,7 @@ import { i18n, loadLanguageAsync } from './i18n';
 {{/i18n}}
 import './styles/reset.scss';
 import './styles/common.scss';
-{{#UI}}
-{{#if_eq UILibrary 'element-ui'}}
 import './styles/element.scss';
-{{/if_eq}}
-{{/UI}}
 
 import App from './index.vue';
 

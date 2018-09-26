@@ -12,7 +12,6 @@ const {
 
 const {
   spawn,
-  execFile,
 } = require('child_process')
 
 const eslintStyles = [
@@ -40,20 +39,15 @@ exports.sortDependencies = (data) => {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = (cwd, data, color) => {
-  const { autoInstall, UI, UILibrary } = data
+  const { autoInstall } = data
   const executable = autoInstall
-  let args = ['install']
-  if (UI) {
-    if (UILibrary.toString() === 'element-ui') {
-      args = [
-        'install',
-        '&&',
-        executable, 'install', '-g', 'element-theme',
-        '&&',
-        'et', '-i', 'src/styles/_element-variables.scss'
-      ]
-    }
-  }
+  const args = [
+    'install',
+    '&&',
+    executable, 'install', '-g', 'element-theme',
+    '&&',
+    'et', '-i', 'src/sass/_element-variables.scss'
+  ]
   console.log()
   console.log(`# ${color('Installing project dependencies ...')}`)
   return runCommand(executable, args, { cwd })

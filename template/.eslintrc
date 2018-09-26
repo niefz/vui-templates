@@ -7,32 +7,19 @@
   "env": {
     "browser": true
   },
-  {{#if_eq eslintConfig "airbnb"}}
   "extends": [
     "plugin:vue/base",
     "plugin:vue/essential",
     "plugin:vue/strongly-recommended",
-    "plugin:vue/recommended",
+    "plugin:vue/recommended"{{#eslint}},
+    {{#if_eq eslintConfig "airbnb"}}
     "airbnb-base"
-  ],
-  {{/if_eq}}
-  {{#if_eq eslintConfig "standard"}}
-  "extends": [
-    "plugin:vue/base",
-    "plugin:vue/essential",
-    "plugin:vue/strongly-recommended",
-    "plugin:vue/recommended",
+    {{/if_eq}}
+    {{#if_eq eslintConfig "standard"}}
     "standard"
+    {{/if_eq}}
+    {{/eslint}}
   ],
-  {{/if_eq}}
-  {{#if_eq eslintConfig "none"}}
-  "extends": [
-    "plugin:vue/base",
-    "plugin:vue/essential",
-    "plugin:vue/strongly-recommended",
-    "plugin:vue/recommended"
-  ],
-  {{/if_eq}}
   "plugins": [
     "vue"
   ],
