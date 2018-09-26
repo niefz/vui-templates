@@ -96,17 +96,6 @@ module.exports = webpackMerge({
         ]
       },
       {
-        test: /\.less$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'happypack/loader?id=less'
-          }
-        ]
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
@@ -152,7 +141,7 @@ module.exports = webpackMerge({
     ]
   },
   resolve: {
-    extensions: ['.vue', '.js', '.scss', '.less'],
+    extensions: ['.vue', '.js', '.scss'],
     alias: {
       'vue': 'vue/dist/vue.js',
       'src': APP_PATH
@@ -216,21 +205,6 @@ module.exports = webpackMerge({
         },
         {
           loader: 'sass-loader'
-        }
-      ]
-    }),
-    new HappyPack({
-      id: 'less',
-      threadPool: happyThreadPool,
-      loaders: [
-        {
-          loader: 'css-loader'
-        },
-        {
-          loader: 'postcss-loader'
-        },
-        {
-          loader: 'less-loader'
         }
       ]
     }),

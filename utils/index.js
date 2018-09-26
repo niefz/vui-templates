@@ -12,7 +12,6 @@ const {
 
 const {
   spawn,
-  execFile,
 } = require('child_process')
 
 const eslintStyles = [
@@ -40,29 +39,15 @@ exports.sortDependencies = (data) => {
  * @param {object} data Data from questionnaire
  */
 exports.installDependencies = (cwd, data, color) => {
-  const { autoInstall, UI, UILibrary } = data
+  const { autoInstall } = data
   const executable = autoInstall
-  let args = ['install']
-  switch (UILibrary) {
-    case 'element-ui':
-      args = [
-        'install',
-        '&&',
-        executable, 'install', '-g', 'element-theme',
-        '&&',
-        'et', '-i', 'src/sass/_element-variables.scss'
-      ]
-      break
-    case 'iview':
-      args = [
-        'install',
-        '&&',
-        executable, 'install', '-g', 'iview-theme',
-        '&&',
-        'iview-theme', 'init', 'theme'
-      ]
-      break
-  }
+  const args = [
+    'install',
+    '&&',
+    executable, 'install', '-g', 'element-theme',
+    '&&',
+    'et', '-i', 'src/sass/_element-variables.scss'
+  ]
   console.log()
   console.log(`# ${color('Installing project dependencies ...')}`)
   return runCommand(executable, args, { cwd })
@@ -97,6 +82,7 @@ exports.printMessage = (data, { green, yellow }) => {
   console.log('# To get started:')
   console.log()
   console.log(`  ${yellow(`${inPlace ? '' : `cd ${destDirName}`}`)}`)
+  console.log(`  ${yellow('npm run build:theme')}`)
   console.log(`  ${yellow(`${installMsg(data)}${eslintMsg(data)}npm run dev`)}`)
   console.log()
   console.log('# Documentation can be found at https://github.com/niefz/vui-templates')

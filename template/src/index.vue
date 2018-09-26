@@ -1,13 +1,10 @@
 <template>
   <div class="wrapper clearfix">
-    <div
-      class="main-wrapper">
-      {{#router}}
-      <router-view/>
-      {{else}}
-      <HelloWorld/>
-      {{/router}}
-    </div>
+    {{#router}}
+    <router-view/>
+    {{else}}
+    <HelloWorld/>
+    {{/router}}
   </div>
 </template>
 <script>
@@ -16,7 +13,10 @@
 
   {{/unless}}
   export default {
-    {{#router}}{{else}}
+    {{#router}}
+    components: {
+    },
+    {{else}}
     components: {
       HelloWorld,
     },
@@ -24,14 +24,5 @@
   };
 </script>
 <style lang="scss" scoped>
-  {{#unless UILibrary 'iview'}}
-  @import "./less/_variables.less";
-  {{else}}
   @import "./sass/variables";
-  {{/unless}}
-
-  .main-wrapper {
-    margin-top: 60px;
-    margin-left: 200px;
-  }
 </style>

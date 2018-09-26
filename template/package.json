@@ -10,23 +10,21 @@
     "url": ""
   },
   "scripts": {
-    {{#UI}}
-    {{#if_eq UILibrary "element-ui"}}
     "build:theme": "et -c src/sass/_element-variables.scss",
-    {{/if_eq}}
-    {{/UI}}
     "dev": "webpack-dev-server --config webpack.dev.config.js --progress --colors",
     "sync": "node browser.sync.config.js",
     "dist": "webpack --config webpack.dist.config.js --progress --colors",
     {{#stylelint}}
     "stylelint": "stylelint 'src/**/*.scss' --fix",
     {{/stylelint}}
+    {{#unit}}
     {{#if_eq runner "jest"}}
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     {{/if_eq}}
     {{#if_eq runner "karma"}}
     "test:unit": "karma start test/unit/karma.conf.js",
     {{/if_eq}}
+    {{/unit}}
     {{#e2e}}
     "test:e2e": "nightwatch --config test/e2e/nightwatch.conf.js",
     {{/e2e}}
@@ -36,22 +34,18 @@
     "sftp": "webpack --config sftp.config.js --progress --colors"
   },
   "dependencies": {
-    {{#UI}}
-    {{#if_eq UILibrary "element-ui"}}
     "element-theme-chalk": "2.4.7",
     "element-ui": "2.4.7",
-    {{/if_eq}}
-    {{/UI}}
     "vue": "2.5.17",
-    {{#i18n}}
-    "vue-i18n": "8.1.0",
-    {{/i18n}}
     {{#router}}
     "vue-router": "3.0.1",
     {{/router}}
     {{#vuex}}
     "vuex": "3.0.1",
     {{/vuex}}
+    {{#i18n}}
+    "vue-i18n": "8.1.0",
+    {{/i18n}}
     "axios": "0.18.0",
     "@babel/polyfill": "7.0.0"
   },
@@ -85,14 +79,7 @@
     "eslint-plugin-node": "7.0.1",
     {{/if_eq}}
     {{/eslint}}
-    {{#UI}}
-    {{#if_eq UILibrary "element-ui"}}
-    "babel-plugin-component": "1.1.1",
-    {{/if_eq}}
-    {{#if_eq UILibrary "iview"}}
-    "babel-plugin-import": "1.9.1",
-    {{/if_eq}}
-    {{/UI}}
+    {{#unit}}
     {{#if_eq runner "jest"}}
     "babel-jest": "23.6.0",
     "babel-plugin-dynamic-import-node": "2.1.0",
@@ -121,6 +108,7 @@
     "sinon": "6.3.4",
     "sinon-chai": "3.2.0",
     {{/if_eq}}
+    {{/unit}}
     {{#e2e}}
     "@babel/register": "7.0.0",
     "chromedriver": "2.41.0",
@@ -139,6 +127,7 @@
     "@babel/runtime": "7.0.0",
     "@vue/babel-plugin-transform-vue-jsx": "0.1.0",
     "@babel/preset-env": "7.1.0",
+    "babel-plugin-component": "1.1.1",
     "browser-sync": "2.24.7",
     "clean-webpack-plugin": "0.1.19",
     "copy-webpack-plugin": "4.5.2",
@@ -149,8 +138,6 @@
     "happypack": "5.0.0",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
-    "less": "3.8.1",
-    "less-loader": "4.1.0",
     "mini-css-extract-plugin": "0.4.3",
     "node-sass": "4.9.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
