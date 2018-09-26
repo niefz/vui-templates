@@ -122,8 +122,8 @@ module.exports = {
         },
         {
           name: 'none (configure it yourself)',
-          value: 'noTest',
-          short: 'noTest',
+          value: 'none',
+          short: 'none',
         },
       ],
     },

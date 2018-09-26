@@ -27,7 +27,7 @@
   };
 </script>
 <style lang="scss" scoped>
-  @import "./styles/variables";
+  @import "./sass/variables";
 
   .main-wrapper {
     margin-top: 60px;

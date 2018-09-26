@@ -17,12 +17,14 @@
     {{#stylelint}}
     "stylelint": "stylelint 'src/**/*.scss' --fix",
     {{/stylelint}}
+    {{#unit}}
     {{#if_eq runner "jest"}}
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     {{/if_eq}}
     {{#if_eq runner "karma"}}
     "test:unit": "karma start test/unit/karma.conf.js",
     {{/if_eq}}
+    {{/unit}}
     {{#e2e}}
     "test:e2e": "nightwatch --config test/e2e/nightwatch.conf.js",
     {{/e2e}}
@@ -77,7 +79,6 @@
     "eslint-plugin-node": "7.0.1",
     {{/if_eq}}
     {{/eslint}}
-    "babel-plugin-component": "1.1.1",
     {{#unit}}
     {{#if_eq runner "jest"}}
     "babel-jest": "23.6.0",
@@ -126,6 +127,7 @@
     "@babel/runtime": "7.0.0",
     "@vue/babel-plugin-transform-vue-jsx": "0.1.0",
     "@babel/preset-env": "7.1.0",
+    "babel-plugin-component": "1.1.1",
     "browser-sync": "2.24.7",
     "clean-webpack-plugin": "0.1.19",
     "copy-webpack-plugin": "4.5.2",
