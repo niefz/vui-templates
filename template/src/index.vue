@@ -26,7 +26,7 @@
     {{/router}}
   };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
   @import "./less/_variables.less";
 
   .main-wrapper {

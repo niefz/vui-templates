@@ -56,7 +56,6 @@
     "stylelint": "9.5.0",
     "stylelint-config-standard": "18.2.0",
     "stylelint-order": "1.0.0",
-    "stylelint-scss": "3.3.0",
     "stylelint-webpack-plugin": "0.10.5",
     {{/stylelint}}
     {{#eslint}}
@@ -144,7 +143,6 @@
     "os": "0.1.1",
     "postcss-loader": "3.0.0",
     "postcss-salad": "2.0.1",
-    "sass-loader": "7.1.0",
     "uglifyjs-webpack-plugin": "2.0.1",
     "url-loader": "1.1.1",
     "vue-loader": "15.4.2",
