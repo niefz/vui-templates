@@ -25,6 +25,12 @@ const lang = 'zh';
 loadLanguageAsync(lang);
 
 {{/i18n}}
+/**
+ * Element 全局配置
+ * @type {{size: string}}
+ */
+Vue.prototype.$ELEMENT = { size: 'small' };
+
 const app = new Vue({
   el: '.wrapper',
   {{#router}}
