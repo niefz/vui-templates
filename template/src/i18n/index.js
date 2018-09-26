@@ -3,11 +3,6 @@
  */
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-{{#UI}}
-{{#if_eq UILibrary 'element-ui'}}
-import ElementLocale from 'element-ui/lib/locale';
-{{/if_eq}}
-{{/UI}}
 
 import messages from '../local';
 
@@ -26,12 +21,6 @@ const setI18nLanguage = (lang) => {
   return lang;
 };
 
-{{#UI}}
-{{#if_eq UILibrary 'element-ui'}}
-ElementLocale.i18n((key, value) => i18n.t(key, value));
-{{/if_eq}}
-
-{{/UI}}
 export const loadLanguageAsync = (lang) => {
   if (i18n.locale === lang) return Promise.resolve(lang);
   if (loadedLanguages.includes(lang)) return Promise.resolve(setI18nLanguage(lang));

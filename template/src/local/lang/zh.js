@@ -1,16 +1,8 @@
 /**
- * Created by NieFZ on 2018/8/27.
+ * Created by NieFZ on 2018/9/18.
  */
-{{#UI}}
-{{#if_eq UILibrary 'element-ui'}}
-import zhLocale from 'element-ui/lib/locale/lang/zh-CN';
-{{/if_eq}}
-{{/UI}}
+import zh from 'iview/dist/locale/zh-CN';
 
 export default {
-  {{#UI}}
-  {{#if_eq UILibrary 'element-ui'}}
-  ...zhLocale,
-  {{/if_eq}}
-  {{/UI}}
+  ...zh,
 };

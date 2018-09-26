@@ -85,17 +85,6 @@ module.exports = webpackMerge({
         ]
       },
       {
-        test: /\.s?css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'happypack/loader?id=sass'
-          }
-        ]
-      },
-      {
         test: /\.less$/,
         use: [
           {
@@ -201,21 +190,6 @@ module.exports = webpackMerge({
             sourceMap: true,
             cacheDirectory: true
           }
-        }
-      ]
-    }),
-    new HappyPack({
-      id: 'sass',
-      threadPool: happyThreadPool,
-      loaders: [
-        {
-          loader: 'css-loader'
-        },
-        {
-          loader: 'postcss-loader'
-        },
-        {
-          loader: 'sass-loader'
         }
       ]
     }),

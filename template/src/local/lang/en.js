@@ -1,16 +1,8 @@
 /**
- * Created by NieFZ on 2018/8/27.
+ * Created by NieFZ on 2018/9/18.
  */
-{{#UI}}
-{{#if_eq UILibrary 'element-ui'}}
-import enLocale from 'element-ui/lib/locale/lang/en';
-{{/if_eq}}
-{{/UI}}
+import en from 'iview/dist/locale/en-US';
 
 export default {
-  {{#UI}}
-  {{#if_eq UILibrary 'element-ui'}}
-  ...enLocale,
-  {{/if_eq}}
-  {{/UI}}
+  ...en,
 };

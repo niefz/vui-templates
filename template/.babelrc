@@ -20,17 +20,7 @@
     "@babel/plugin-syntax-dynamic-import",
     [
       "@babel/plugin-proposal-function-bind"
-    ]{{#UI}},
-    {{#if_eq UILibrary "element-ui"}}
-    [
-      "component",
-      {
-        "libraryName": "element-ui",
-        "styleLibraryName": "~theme"
-      }
-    ]
-    {{/if_eq}}
-    {{#if_eq UILibrary "iview"}}
+    ],
     [
       "import",
       {
@@ -38,8 +28,6 @@
         "libraryDirectory": "src/components"
       }
     ]
-    {{/if_eq}}
-    {{/UI}}
   ],
   "comments": false
 }

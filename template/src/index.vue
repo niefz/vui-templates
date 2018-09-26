@@ -16,7 +16,10 @@
 
   {{/unless}}
   export default {
-    {{#router}}{{else}}
+    {{#router}}
+    components: {
+    },
+    {{else}}
     components: {
       HelloWorld,
     },
@@ -24,7 +27,7 @@
   };
 </script>
 <style lang="scss" scoped>
-  @import "./styles/variables";
+  @import "./less/_variables.less";
 
   .main-wrapper {
     margin-top: 60px;
