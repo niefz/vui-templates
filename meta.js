@@ -67,6 +67,32 @@ module.exports = {
       type: 'confirm',
       message: 'Install vue-i18n?',
     },
+    charts: {
+      type: 'confirm',
+      message: 'Use charts to Make your data come alive?',
+    },
+    chartsConfig: {
+      when: 'charts',
+      type: 'list',
+      message: 'Pick an charts preset',
+      choices: [
+        {
+          name: 'ECharts (http://echarts.baidu.com/)',
+          value: 'echarts',
+          short: 'echarts',
+        },
+        {
+          name: 'Highcharts (https://www.hcharts.cn/)',
+          value: 'highcharts',
+          short: 'highcharts',
+        },
+        {
+          name: 'none (configure it yourself)',
+          value: 'none',
+          short: 'none',
+        },
+      ],
+    },
     htmllint: {
       type: 'confirm',
       message: 'Use htmllint to lint your html?',

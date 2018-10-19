@@ -46,6 +46,14 @@
     {{#i18n}}
     "vue-i18n": "8.1.0",
     {{/i18n}}
+    {{#charts}}
+    {{#if_eq chartsConfig "echarts"}}
+    "echarts": "4.2.0-rc.2",
+    {{/if_eq}}
+    {{#if_eq chartsConfig "highcharts"}}
+    "highcharts": "6.2.0",
+    {{/if_eq}}
+    {{/charts}}
     "axios": "0.18.0",
     "@babel/polyfill": "7.0.0"
   },
