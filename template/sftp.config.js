@@ -4,7 +4,7 @@
 const { resolve } = require('path');
 const webpackMerge = require('webpack-merge');
 const WebpackSftpClient = require('webpack-sftp-client');
-const config = require('./webpack.dist.config');
+const config = require('./webpack.config.dist.js');
 
 const BUILD_PATH = resolve(__dirname, 'dist');
 

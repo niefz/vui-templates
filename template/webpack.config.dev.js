@@ -7,7 +7,7 @@ const webpackMerge = require('webpack-merge');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
-const webpackBaseConfig = require('./webpack.base.config.js');
+const webpackBaseConfig = require('./webpack.config.base.js');
 
 const APP_PATH = resolve(__dirname, 'src');
 
