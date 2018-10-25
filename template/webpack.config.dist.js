@@ -9,7 +9,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const webpackBaseConfig = require('./webpack.base.config.js');
+const webpackBaseConfig = require('./webpack.config.base.js');
 
 const APP_PATH = resolve(__dirname, 'src');
 const BUILD_PATH = resolve(__dirname, 'dist');

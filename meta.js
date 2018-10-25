@@ -194,7 +194,7 @@ module.exports = {
     '.htmllintrc': 'htmllint',
     '.stylelintignore': 'stylelint',
     '.stylelintrc': 'stylelint',
-    'webpack.test.config.js': 'unit && runner === "karma"',
+    'webpack.config.test.js': 'unit && runner === "karma"',
   },
   complete: function (data, { chalk }) {
     const { inPlace, destDirName } = data
