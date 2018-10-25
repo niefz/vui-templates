@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Wed Aug 29 2018 15:46:45 GMT+0800 (CST)
 
-const webpackConfig = require('../../webpack.test.config');
+const webpackConfig = require('../../webpack.config.test');
 
 module.exports = function (config) {
   config.set({

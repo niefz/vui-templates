@@ -10,9 +10,9 @@
     "url": ""
   },
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.config.js --progress --colors",
+    "dev": "webpack-dev-server --config webpack.config.dev.js --progress --colors",
     "sync": "node browser.sync.config.js",
-    "dist": "webpack --config webpack.dist.config.js --progress --colors",
+    "dist": "webpack --config webpack.config.dist.js --progress --colors",
     {{#stylelint}}
     "stylelint": "stylelint 'src/**/*.less' --fix",
     {{/stylelint}}
