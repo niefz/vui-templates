@@ -183,7 +183,7 @@ module.exports = {
     'src/routers/**/*': 'router',
     'src/stores/**/*': 'vuex',
     'src/i18n/**/*': 'i18n',
-    'src/local/**/*': 'i18n',
+    'src/locale/**/*': 'i18n',
     'test/unit/**/*': 'unit',
     'test/unit/index.js': 'unit && runner === "karma"',
     'test/unit/karma.conf.js': 'unit && runner === "karma"',
