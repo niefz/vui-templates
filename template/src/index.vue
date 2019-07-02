@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper clearfix">
     {{#router}}
-    <router-view/>
+    <router-view />
     {{else}}
-    <HelloWorld/>
+    <HelloWorld />
     {{/router}}
   </div>
 </template>
