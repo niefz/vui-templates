@@ -31,6 +31,7 @@ export const getCookie = (name) => {
  * @param name
  * @param value
  * @param domain
+ * @param path
  */
 export const setCookie = (name, value, domain, path = '/') => {
   document.cookie = `${name}=${value}; domain=${domain}; path=${path}`;
