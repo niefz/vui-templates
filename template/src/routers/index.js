@@ -14,7 +14,7 @@ export default new VueRouter({
       path: '/',
       name: 'HelloWorld',
       component: r => require.ensure([], (require) => {
-        r(require('src/components/hello-world/hello-world.vue'));
+        r(require('@/components/hello-world/hello-world.vue'));
       }, 'hello-world'),
     },
   ],
