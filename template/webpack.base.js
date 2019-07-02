@@ -30,16 +30,18 @@ module.exports = webpackMerge({
       {{/router}}
       {{#vuex}}
       'vuex',
-      {{/vuex}}
+      {{/vuex}},
     ],
-    index: 'src/index.js'
+    index: 'src/index.js',
   },
   output: {
     publicPath: '/',
     filename: 'assets/js/[name].min.js?v=[hash:8]',
-    chunkFilename: 'assets/js/[name].min.js?v=[chunkhash:8]'
+    crossOriginLoading: 'anonymous',
+    chunkFilename: 'assets/js/[name].min.js?v=[chunkhash:8]',
   },
   module: {
+    noParse: /node_modules\/(moment|chart\.js)/,
     rules: [
       {
         test: /\.x?html?$/,
@@ -52,14 +54,14 @@ module.exports = webpackMerge({
             query: {
               config: '.htmllintrc',
               failOnError: true,
-              failOnWarning: false
+              failOnWarning: false,
             },
           },
           {{/htmllint}}
           {
-            loader: 'html-loader'
-          }
-        ]
+            loader: 'html-loader',
+          },
+        ],
       },
       {{#eslint}}
       {
@@ -69,20 +71,20 @@ module.exports = webpackMerge({
         exclude: /node_modules/,
         use: [
           {
-            loader: 'happypack/loader?id=eslint'
-          }
-        ]
+            loader: 'happypack/loader?id=eslint',
+          },
+        ],
       },
       {{/eslint}}
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         include: /src/,
         exclude: /node_modules/,
         use: [
           {
-            loader: 'happypack/loader?id=babel'
-          }
-        ]
+            loader: 'happypack/loader?id=babel',
+          },
+        ],
       },
       {
         test: /\.s?css$/,
@@ -91,9 +93,9 @@ module.exports = webpackMerge({
             loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'happypack/loader?id=sass'
-          }
-        ]
+            loader: 'happypack/loader?id=sass',
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -102,10 +104,10 @@ module.exports = webpackMerge({
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'assets/images/[name].[ext]?v=[hash:8]'
-            }
-          }
-        ]
+              name: 'assets/images/[name].[ext]?v=[hash:8]',
+            },
+          },
+        ],
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/,
@@ -114,10 +116,10 @@ module.exports = webpackMerge({
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: 'assets/media/[name].[ext]?v=[hash:8]'
-            }
-          }
-        ]
+              name: 'assets/media/[name].[ext]?v=[hash:8]',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff2?|eot|ttf|otf)$/,
@@ -125,44 +127,48 @@ module.exports = webpackMerge({
           {
             loader: 'file-loader',
             options: {
-              name: 'assets/fonts/[name].[ext]?v=[hash:8]'
-            }
-          }
-        ]
+              name: 'assets/fonts/[name].[ext]?v=[hash:8]',
+            },
+          },
+        ],
       },
       {
         test: /\.vue$/,
         use: [
           {
-            loader: 'vue-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'vue-loader',
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['.vue', '.js', '.scss'],
+    modules: [
+      'node_modules',
+    ],
+    extensions: ['.js', '.scss', '.vue'],
     alias: {
       'vue': 'vue/dist/vue.js',
-      'src': APP_PATH
-    }
+      '@': APP_PATH,
+    },
   },
   optimization: {
     splitChunks: {
+      chunks: 'all',
       cacheGroups: {
         vendors: {
           test: /node_modules/,
           name: 'vendors',
-          chunks: 'all',
-          priority: 10
+          priority: 10,
+          reuseExistingChunk: true,
         },
         commons: {
           name: 'commons',
           chunks: 'initial',
-          minChunks: Infinity
-        }
-      }
-    }
+          minChunks: Infinity,
+        },
+      },
+    },
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -174,10 +180,11 @@ module.exports = webpackMerge({
         {
           loader: 'eslint-loader',
           options: {
-            formatter: require('eslint-friendly-formatter')
-          }
-        }
-      ]
+            cache: true,
+            formatter: require('eslint-friendly-formatter'),
+          },
+        },
+      ],
     }),
     {{/eslint}}
     new HappyPack({
@@ -188,23 +195,23 @@ module.exports = webpackMerge({
           loader: 'babel-loader',
           options: {
             sourceMap: true,
-            cacheDirectory: true
-          }
-        }
-      ]
+            cacheDirectory: true,
+          },
+        },
+      ],
     }),
     new HappyPack({
       id: 'sass',
       threadPool: happyThreadPool,
       loaders: [
         {
-          loader: 'css-loader'
+          loader: 'css-loader',
         },
         {
-          loader: 'postcss-loader'
+          loader: 'postcss-loader',
         },
         {
-          loader: 'sass-loader'
+          loader: 'sass-loader',
         }
       ]
     }),
@@ -219,14 +226,15 @@ module.exports = webpackMerge({
         removeEmptyAttributes: true,
         removeRedundantAttributes: true,
         sortAttributes: true,
-        sortClassName: true
+        sortClassName: true,
       },
       chunks: ['vendors', 'commons', 'index'],
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/[name].min.css?v=[hash:8]'
-    })
+      filename: 'assets/css/[name].min.css?v=[hash:8]',
+      chunkFilename: 'assets/js/[name].min.css?v=[chunkhash:8]',
+    }),
   ],
   node: {
     setImmediate: false,
@@ -234,6 +242,6 @@ module.exports = webpackMerge({
     fs: 'empty',
     net: 'empty',
     tls: 'empty',
-    child_process: 'empty'
-  }
+    child_process: 'empty',
+  },
 }, multipageConfig);

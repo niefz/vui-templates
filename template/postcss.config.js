@@ -4,21 +4,23 @@
 module.exports = {
   plugins: {
     'postcss-salad': {
-      browsers: ['last 20 versions'],
+      browsers: [
+        'last 20 versions',
+      ],
       features: {
         bem: {
           shortcuts: {
             component: 'b',
             descendent: 'e',
-            modifier: 'm'
+            modifier: 'm',
           },
           separators: {
             descendent: '-',
-            modifier: '--'
-          }
-        }
-      }
+            modifier: '--',
+          },
+        },
+      },
     },
-    'cssnano': {}
-  }
+    'cssnano': {},
+  },
 };

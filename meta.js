@@ -1,18 +1,18 @@
 /**
  * Created by niefz on 2018/9/18.
  */
-const { join } = require('path')
+const { join } = require('path');
 
 const {
   sortDependencies,
   installDependencies,
   runLintFix,
   printMessage,
-} = require('./utils')
+} = require('./utils');
 
-const pkg = require('./package.json')
+const pkg = require('./package.json');
 
-const templateVersion = pkg.version
+const templateVersion = pkg.version;
 
 module.exports = {
   metalsmith: {
@@ -21,16 +21,16 @@ module.exports = {
   helpers: {
     if_or(v1, v2, options) {
 
-      const { fn, inverse } = options
+      const { fn, inverse } = options;
 
       if (v1 || v2) {
-        return fn(this)
+        return fn(this);
       }
 
-      return inverse(this)
+      return inverse(this);
     },
     template_version() {
-      return templateVersion
+      return templateVersion;
     },
   },
   prompts: {
@@ -194,29 +194,29 @@ module.exports = {
     '.htmllintrc': 'htmllint',
     '.stylelintignore': 'stylelint',
     '.stylelintrc': 'stylelint',
-    'webpack.config.test.js': 'unit && runner === "karma"',
+    'webpack.test.js': 'unit && runner === "karma"',
   },
-  complete: function (data, { chalk }) {
-    const { inPlace, destDirName } = data
-    const { green, red } = chalk
+  complete(data, { chalk }) {
+    const { inPlace, destDirName } = data;
+    const { green, red } = chalk;
 
-    sortDependencies(data)
+    sortDependencies(data);
 
-    const cwd = join(process.cwd(), inPlace ? '' : destDirName)
+    const cwd = join(process.cwd(), inPlace ? '' : destDirName);
 
     if (data.autoInstall) {
       installDependencies(cwd, data, green)
         .then(() => {
-          return runLintFix(cwd, data, green)
+          return runLintFix(cwd, data, green);
         })
         .then(() => {
-          printMessage(data, chalk)
+          printMessage(data, chalk);
         })
         .catch(e => {
-          console.log(red('Error:'), e)
-        })
+          console.log(red('Error:'), e);
+        });
     } else {
-      printMessage(data, chalk)
+      printMessage(data, chalk);
     }
   },
-}
+};
