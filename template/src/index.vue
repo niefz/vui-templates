@@ -9,7 +9,7 @@
 </template>
 <script>
 {{#unless router}}
-import HelloWorld from './components/hello-world/hello-world';
+import HelloWorld from './components/hello-world';
 
 {{/unless}}
 export default {
@@ -23,6 +23,3 @@ export default {
   {{/router}}
 };
 </script>
-<style lang="scss" scoped>
-  @import "./sass/variables";
-</style>
