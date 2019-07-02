@@ -1,4 +1,20 @@
 /**
+ * 消息提示
+ * @param type
+ * @param message
+ * @param duration
+ * @returns {*}
+ */
+import { Message } from 'element-ui';
+
+export const message = (type, message, duration = 1500 ) => {
+  return Message({
+    type,
+    message,
+    duration,
+  });
+}
+/**
  * 获取 url 参数
  * @param name
  * @returns {*}
