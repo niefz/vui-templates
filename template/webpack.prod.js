@@ -39,7 +39,7 @@ module.exports = webpackMerge(webpackBaseConfig, {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(BUILD_PATH),
+    new CleanWebpackPlugin(),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
