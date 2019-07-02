@@ -5,7 +5,7 @@ module.exports = {
   plugins: {
     'postcss-salad': {
       browsers: [
-        'last 20 versions',
+        'last 100 versions',
       ],
       features: {
         bem: {
