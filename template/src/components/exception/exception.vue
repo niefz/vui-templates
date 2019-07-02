@@ -9,12 +9,12 @@
       <div class="exception-inner--content">
         <h1>
           <slot name="title">
-            {{ exception }}
+            \{{ exception }}
           </slot>
         </h1>
         <h2>
           <slot name="desc">
-            {{ exceptionTip }}
+            \{{ exceptionTip }}
           </slot>
         </h2>
         <slot />
