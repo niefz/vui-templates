@@ -1,13 +1,13 @@
 <template>
-  <h1>\{{ msg }}</h1>
+  <h1>{{ msg }}</h1>
 </template>
 <script>
-  export default {
-    name: 'HelloWorld',
-    data() {
-      return {
-        msg: 'Welcome to Your Vue.js App',
-      };
-    },
-  };
+export default {
+  name: 'HelloWorld',
+  data() {
+    return {
+      msg: 'Welcome to Your Vue.js App',
+    };
+  },
+};
 </script>
