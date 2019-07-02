@@ -30,7 +30,7 @@ module.exports = webpackMerge({
       {{/router}}
       {{#vuex}}
       'vuex',
-      {{/vuex}},
+      {{/vuex}}
     ],
     index: 'src/index.js',
   },
