@@ -32,7 +32,7 @@ module.exports = webpackMerge({
       'vuex',
       {{/vuex}}
     ],
-    index: 'src/index.js',
+    index: `${APP_PATH}/index.js`,
   },
   output: {
     publicPath: '/',

@@ -4,8 +4,8 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
@@ -18,25 +18,25 @@ const BUILD_PATH = resolve(__dirname, 'dist');
 module.exports = webpackMerge(webpackBaseConfig, {
   mode: 'production',
   output: {
-    path: BUILD_PATH
+    path: BUILD_PATH,
   },
   optimization: {
     minimizer: [
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true
+        sourceMap: true,
       }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           safe: true,
           discardComments: {
-            removeAll: true
-          }
+            removeAll: true,
+          },
         },
-        canPrint: true
-      })
-    ]
+        canPrint: true,
+      }),
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(BUILD_PATH),
@@ -46,9 +46,9 @@ module.exports = webpackMerge(webpackBaseConfig, {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([
       {
-        from: `${APP_PATH}/assets/`,
-        to: `${BUILD_PATH}/assets/`
-      }
+        from: `${ APP_PATH }/assets/`,
+        to: `${ BUILD_PATH }/assets/`,
+      },
     ]),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: true,

@@ -17,8 +17,8 @@ module.exports = webpackMerge(config, {
       password: '',
       path: BUILD_PATH,
       remotePath: '',
-      verbose: true
-    })
-  ]
+      verbose: true,
+    }),
+  ],
 });
 
