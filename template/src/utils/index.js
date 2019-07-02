@@ -13,7 +13,8 @@ export const message = (type, message, duration = 1500 ) => {
     message,
     duration,
   });
-}
+};
+
 /**
  * 获取 url 参数
  * @param name
