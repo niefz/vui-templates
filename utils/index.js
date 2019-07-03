@@ -48,7 +48,7 @@ exports.installDependencies = (cwd, data, color) => {
     '&&',
     executable, 'install', '-g', 'element-theme',
     '&&',
-    'et', '-i', 'src/sass/_element-variables.scss',
+    'et', '-i', './src/sass/_element-variables.scss',
   ];
   console.log();
   console.log(`# ${ color('Installing project dependencies ...') }`);
