@@ -7,10 +7,10 @@
  */
 import { Message } from 'element-ui';
 
-export const message = (type, message, duration = 1500 ) => {
+export const message = (type, msg, duration = 1500 ) => {
   return Message({
     type,
-    message,
+    message: msg,
     duration,
   });
 };

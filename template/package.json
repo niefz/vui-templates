@@ -67,6 +67,7 @@
     "highcharts": "^7.1.2",
     {{/if_eq}}
     {{/charts}}
+    "moment": "^2.24.0",
     "fundebug-javascript": "^1.8.2",
     "fundebug-vue": "^0.0.1"
   },
