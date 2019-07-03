@@ -174,7 +174,7 @@ module.exports = {
     ],
     extensions: ['.js', '.scss', '.vue'],
     alias: {
-      'vue': 'vue/dist/vue.js',
+      vue: 'vue/dist/vue.js',
       '@': APP_PATH,
     },
   },
@@ -238,8 +238,8 @@ module.exports = {
         },
         {
           loader: 'sass-loader',
-        }
-      ]
+        },
+      ],
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
