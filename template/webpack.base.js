@@ -45,7 +45,7 @@ module.exports = {
   entry: {
     vendors: [
       'axios',
-      'babel-polyfill',
+      '@babel/polyfill',
       'vue',
       {{#i18n}}
       'vue-i18n',

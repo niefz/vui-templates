@@ -3,22 +3,22 @@
  */
 module.exports = {
   plugins: {
-    'postcss-salad': {
+    'postcss-cssnext': {
       browsers: [
         'last 100 versions',
       ],
-      features: {
-        bem: {
-          shortcuts: {
-            component: 'b',
-            descendent: 'e',
-            modifier: 'm',
-          },
-          separators: {
-            descendent: '-',
-            modifier: '--',
-          },
-        },
+    },
+    'postcss-bem': {
+      defaultNamespace: undefined,
+      style: 'bem',
+      shortcuts: {
+        component: 'b',
+        descendent: 'e',
+        modifier: 'm',
+      },
+      separators: {
+        descendent: '-',
+        modifier: '--',
       },
     },
     cssnano: {},
