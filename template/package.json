@@ -20,12 +20,12 @@
     "url": ""
   },
   "scripts": {
-    "build:theme": "et -c src/sass/_element-variables.scss",
+    "build:theme": "et -c ./src/sass/_element-variables.scss",
     "dev": "webpack-dev-server --config webpack.dev.js --progress --colors",
     "sync": "webpack-dev-server --config webpack.sync.js --progress --colors",
     "prod": "webpack --config webpack.prod.js --progress --colors",
     {{#stylelint}}
-    "stylelint": "stylelint 'src/**/*.scss' --fix",
+    "stylelint": "stylelint './src/**/*.scss' --fix",
     {{/stylelint}}
     {{#unit}}
     {{#if_eq runner "jest"}}

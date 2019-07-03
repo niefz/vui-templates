@@ -1,55 +1,13 @@
 /**
  * Created by niefz on 2018/9/18.
  */
-const { resolve } = require('path');
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-const webpackBaseConfig = require('./webpack.base.js');
+const webpackDevConfig = require('./webpack.dev.js');
 
-const APP_PATH = resolve(__dirname, 'src');
-
-module.exports = webpackMerge(webpackBaseConfig, {
-  mode: 'development',
-  output: {
-    path: APP_PATH,
-  },
-  devtool: 'cheap-module-eval-source-map',
-  context: __dirname,
-  devServer: {
-    proxy: {},
-    contentBase: APP_PATH,
-    compress: true,
-    historyApiFallback: true,
-    allowedHosts: [
-      '.midea.com',
-    ],
-    hot: true,
-    open: true,
-    port: 12586,
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
-  },
-  watchOptions: {
-    ignored: /node_modules/,
-  },
+module.exports = webpackMerge(webpackDevConfig, {
   plugins: [
-    {{#stylelint}}
-    new StyleLintPlugin({
-      context: 'src/',
-      files: ['**/*.{vue,html,s?(a|c)ss}'],
-      cache: true
-    }),
-    {{/stylelint}}
-    new FriendlyErrorsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new BrowserSyncPlugin(
       // BrowserSync options
       {

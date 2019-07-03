@@ -243,9 +243,9 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/index.html',
+      template: `${APP_PATH}/index.html`,
       inject: 'body',
-      favicon: 'src/favicon.ico',
+      favicon: `${APP_PATH}/favicon.ico`,
       minify: {
         collapseWhitespace: true,
         removeComments: true,

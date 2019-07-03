@@ -40,7 +40,7 @@ module.exports = webpackMerge(webpackBaseConfig, {
   plugins: [
     {{#stylelint}}
     new StyleLintPlugin({
-      context: 'src/',
+      context: APP_PATH,
       files: ['**/*.{vue,html,s?(a|c)ss}'],
       cache: true,
     }),
