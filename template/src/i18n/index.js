@@ -5,7 +5,7 @@ import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import ElementLocale from 'element-ui/lib/locale';
 
-import messages from '../locale';
+import messages from './lang/zh';
 
 Vue.use(VueI18n);
 
