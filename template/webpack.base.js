@@ -2,6 +2,7 @@
  * Created by niefz on 2018/9/18.
  */
 const { resolve } = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');

@@ -46,8 +46,8 @@ module.exports = webpackMerge(webpackBaseConfig, {
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([
       {
-        from: `${ APP_PATH }/assets/`,
-        to: `${ BUILD_PATH }/assets/`,
+        from: `${APP_PATH}/assets/`,
+        to: `${BUILD_PATH}/assets/`,
       },
     ]),
     new WorkboxPlugin.GenerateSW({
