@@ -3,20 +3,44 @@
  */
 const { resolve } = require('path');
 const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HappyPack = require('happypack');
 const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
-// 多入口
-const multipageConfig = require('./multipage.config.js');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 const APP_PATH = resolve(__dirname, 'src');
 
-module.exports = webpackMerge({
+// 多入口
+const entries = {};
+const htmlPlugins = [];
+
+glob.sync(`${APP_PATH}/pages/**/index.js`)
+  .forEach((filePath) => {
+    const filename = filePath.match(/\/pages\/(.+)\/index.js/)[1];
+    entries[filename] = filePath;
+    const htmlPluginConfig = {
+      filename: `${filename}/index.html`,
+      template: `${APP_PATH}/pages/${filename}/index.html`,
+      inject: 'body',
+      favicon: `${APP_PATH}/favicon.ico`,
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        sortAttributes: true,
+        sortClassName: true,
+      },
+      chunks: ['vendors', 'commons', filename],
+      chunksSortMode: 'dependency',
+    };
+    htmlPlugins.push(new HtmlWebpackPlugin(htmlPluginConfig));
+  });
+
+module.exports = {
   entry: {
     vendors: [
       'axios',
@@ -33,6 +57,7 @@ module.exports = webpackMerge({
       {{/vuex}}
     ],
     index: `${APP_PATH}/index.js`,
+    ...entries,
   },
   output: {
     publicPath: '/',
@@ -41,7 +66,7 @@ module.exports = webpackMerge({
     chunkFilename: 'assets/js/[name].min.js?v=[chunkhash:8]',
   },
   module: {
-    noParse: /node_modules\/(moment|chart\.js)/,
+    noParse: /node_modules\/(moment|echarts|highcharts\.js)/,
     rules: [
       {
         test: /\.x?html?$/,
@@ -231,6 +256,7 @@ module.exports = webpackMerge({
       chunks: ['vendors', 'commons', 'index'],
       chunksSortMode: 'dependency',
     }),
+    ...htmlPlugins,
     new MiniCssExtractPlugin({
       filename: 'assets/css/[name].min.css?v=[hash:8]',
       chunkFilename: 'assets/js/[name].min.css?v=[chunkhash:8]',
@@ -244,4 +270,4 @@ module.exports = webpackMerge({
     tls: 'empty',
     child_process: 'empty',
   },
-}, multipageConfig);
+};

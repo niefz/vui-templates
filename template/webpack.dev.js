@@ -28,7 +28,7 @@ module.exports = webpackMerge(webpackBaseConfig, {
     ],
     hot: true,
     open: true,
-    port: 12586,
+    port: 8080,
     overlay: {
       warnings: true,
       errors: true,
