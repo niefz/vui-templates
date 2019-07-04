@@ -12,9 +12,11 @@ module.exports = {
       defaultNamespace: undefined,
       style: 'bem',
       shortcuts: {
+        when: 'w',
         component: 'b',
         descendent: 'e',
         modifier: 'm',
+        utility: 'u',
       },
       separators: {
         descendent: '-',
