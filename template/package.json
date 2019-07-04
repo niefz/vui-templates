@@ -168,6 +168,7 @@
     "postcss-bem": "^0.4.1",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^3.0.0",
+    "postcss-scss": "^2.0.0",
     "sass-loader": "^7.1.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^2.0.1",
