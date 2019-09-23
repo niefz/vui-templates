@@ -4,7 +4,7 @@
 const webpackMerge = require('webpack-merge');
 const portfinder = require('portfinder');
 
-const serverConfig = require('./webpack.base.js');
+const serverConfig = require('./webpack.server.js');
 
 module.exports = portfinder
   .getPortPromise({
